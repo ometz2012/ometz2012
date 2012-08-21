@@ -7,14 +7,9 @@ namespace UI
 {
     class Class1
     {
-public void Bombik()
+        public void bombik2()
         { }
-public void bombik2();
-
-
-    <<<<<<< .mine       public void bombik2();
-=======        public void Bombik()
+        public void Bombik()
         { }
-
->>>>>>> .theirs    }
+    }
 }
