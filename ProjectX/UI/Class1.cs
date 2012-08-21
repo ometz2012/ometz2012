@@ -7,9 +7,22 @@ namespace UI
 {
     class Class1
     {
-        public void bombik2()
-        { }
+
+
+
+
+    public void bombik2();
+public void Bombik();
+
+        public void bombik2();
+
+
+        public void Bullshit()
+        {}
+
+
         public void Bombik()
         { }
-    }
+
+
 }
