@@ -7,5 +7,8 @@ namespace UI
 {
     class Class1
     {
+        public void Bombik()
+        { }
+
     }
 }
