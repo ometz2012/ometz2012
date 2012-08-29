@@ -40,7 +40,6 @@ namespace Ometz.RFQ.BLL.Model
 
         public string Notes
         { get; set; }
-
     }
 
     public abstract class DTOQuoteDetail
