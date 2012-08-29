@@ -15,6 +15,11 @@ namespace Ometz.RFQ.BLL.Model
         {
             get;set;
         }
+
+        public string Name
+        {
+            get;set;
+        }
     
     }
 }
