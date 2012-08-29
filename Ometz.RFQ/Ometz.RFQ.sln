@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.RFQ.DAL", "Ometz.RFQ.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.RFQ.BLL", "Ometz.RFQ.BLL\Ometz.RFQ.BLL.csproj", "{518476AD-13AD-4335-A771-4F2E52CC3846}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.RFQ.BLL.Model", "Ometz.RFQ.BLL.Model\Ometz.RFQ.BLL.Model.csproj", "{6C4710F6-0639-446D-86B0-743FA6C28DC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{518476AD-13AD-4335-A771-4F2E52CC3846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{518476AD-13AD-4335-A771-4F2E52CC3846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{518476AD-13AD-4335-A771-4F2E52CC3846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4710F6-0639-446D-86B0-743FA6C28DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4710F6-0639-446D-86B0-743FA6C28DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4710F6-0639-446D-86B0-743FA6C28DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4710F6-0639-446D-86B0-743FA6C28DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
