@@ -12,15 +12,10 @@ namespace Ometz.RFQ.BLL.Model
     public abstract class DTOCompany
     {
         public int CompanyID
-        {
-            get;set;
-        }
+        {get;set;}
 
         public string Name
-        {
-            get;set;
-        }
-    
+        {get;set;}  
     }
 
     public abstract class DTOQoute
