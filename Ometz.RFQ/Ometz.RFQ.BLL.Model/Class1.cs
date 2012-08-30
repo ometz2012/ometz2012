@@ -16,10 +16,27 @@ namespace Ometz.RFQ.BLL.Model
         public int CompanyTypeID { get; set; }
         public int CategoryID { get; set; }
 
-        public abstract string GetCompanyType();
-        public abstract string GetCompanyCategory();
+        //public abstract string GetCompanyType();
+        //public abstract string GetCompanyCategory();
   
     }
+
+    public abstract class DTOAddress
+    {
+        public int AddressID { get; set; }
+        public int CompanyID { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+    }
+
+
 
     public abstract class DTOQuote
     {
@@ -35,8 +52,8 @@ namespace Ometz.RFQ.BLL.Model
         public DateTime EndDate
         { get; set; }
 
-        public abstract string GetCompany(int CompanyID);
-        public virtual DTOQuote ShowBid();
+        //public abstract string GetCompany(int CompanyID);
+        //public virtual DTOQuote ShowBid();
     }
 
     public abstract class DTOQuoteBid
@@ -75,7 +92,7 @@ namespace Ometz.RFQ.BLL.Model
         public decimal Value
         { get; set; }
 
-        public abstract string GetQuote(int QuoteID);
+        //public abstract string GetQuote(int QuoteID);
     }
 
     public abstract class DTOQuoteParticipant

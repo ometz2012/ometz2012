@@ -18,29 +18,24 @@ namespace Ometz.RFQ.BLL
 
     public class DTOCompanyToShow : DTOCompany
     {
-        public override string GetCompanyCategory()
-        {
-            int categoryID = this.CategoryID;
-            Category category;
-            using (var context = new RFQEntities())
-            {
-                category = (from cat in context.Categories
-                            where cat.CategoryID == categoryID
-                            select cat).First();
+        //public override string GetCompanyCategory()
+        //{
+        //    int categoryID = this.CategoryID;
+        //    Category category;
+        //    using (var context = new RFQEntities())
+        //    {
+        //        category = (from cat in context.Categories
+        //                    where cat.CategoryID == categoryID
+        //                    select cat).First();
 
-            }
+        //    }
 
-            string categoryName = category.Type.ToString();
-            return categoryName;
+        //    string categoryName = category.Type.ToString();
+        //    return categoryName;
 
 
-        }
-
-        public override string GetCompanyType()
-        {
-            int typeID = this.CompanyTypeID;
-            throw new NotImplementedException();
-        }
+        //}
+        
     }
 
     // DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
@@ -82,9 +77,26 @@ namespace Ometz.RFQ.BLL
 
             return check;
         }
+    }// END ----DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
+
+
+    //  DTO ADDRESS TO SHOW
+      public class DTOAddressToShow : DTOAddress
+    {
+
     }
 
-    // END ----DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
+      //----DTO--Quote--------------
+    public class DTOQuoteToShow : DTOQuote
+    {
+
+    }
+
+    //----DTO--Quote--Detail --- 
+    public abstract class DTOQuoteDetailToShow : DTOQuoteDetail
+    {
+ 
+    }
 
 
 
@@ -139,7 +151,7 @@ namespace Ometz.RFQ.BLL
         }
 
         //Method that creates new Company
-        public static bool CreateNewSupplier(DTOCompanyToShow NewSupplier)
+        public static bool CreateNewCompany(DTOCompanyToShow CompanyNew)
         {
             bool check = false;
             using (TransactionScope transaction = new TransactionScope())
@@ -147,23 +159,23 @@ namespace Ometz.RFQ.BLL
 
                 try
                 {
-                    Company CompanyNew = new Company();
+                    Company CompanyIn = new Company();
                     //Data transfer to the new company
-                    CompanyNew.Name = NewSupplier.Name;
+                    CompanyIn.Name = CompanyNew.Name;
 
 
                     using (var context = new RFQEntities())
                     {
                         //Finding references for the Foreign Keys
-                        Category existingCategory = context.Categories.Single(p => p.CategoryID == NewSupplier.CategoryID);
-                        CompanyType existingCompanyType = context.CompanyTypes.Single(p => p.CompanyTypeID == NewSupplier.CompanyTypeID);
+                        Category existingCategory = context.Categories.Single(p => p.CategoryID == CompanyNew.CategoryID);
+                        CompanyType existingCompanyType = context.CompanyTypes.Single(p => p.CompanyTypeID == CompanyNew.CompanyTypeID);
                         //Adding refernces
-                        CompanyNew.Category = existingCategory;
-                        CompanyNew.CompanyType = existingCompanyType;
+                        CompanyIn.Category = existingCategory;
+                        CompanyIn.CompanyType = existingCompanyType;
 
-                        if (CompanyNew.EntityState == EntityState.Detached)
+                        if (CompanyIn.EntityState == EntityState.Detached)
                         {
-                            context.Companies.AddObject(CompanyNew);
+                            context.Companies.AddObject(CompanyIn);
                         }
 
                         context.SaveChanges();
@@ -187,9 +199,164 @@ namespace Ometz.RFQ.BLL
 
             }
 
+        }//End of Create New Company Method
+
+          //Method that creates new Address for specific Company
+        public static bool CreateNewAddress(DTOAddressToShow AddressNew)
+        {
+            bool check = false;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+
+                try
+                {
+                    Address AddressIn = new Address();
+                    //Data transfer to the the AddressIn
+                    AddressIn.Address1 = AddressNew.Address1;
+                    AddressIn.Address2 = AddressNew.Address2;
+                    AddressIn.City = AddressNew.City;
+                    AddressIn.State = AddressNew.State;
+                    AddressIn.PostalCode = AddressNew.PostalCode;
+                    AddressIn.Country = AddressNew.Country;
+                    AddressIn.Phone = AddressNew.Phone;
+                    AddressIn.Fax = AddressNew.Fax;
+                    AddressIn.Email = AddressNew.Email;
+
+                    using (var context = new RFQEntities())
+                    {
+                        //Finding references for the Foreign Keys
+                        Company existingCompany = context.Companies.Single(p => p.CompanyID == AddressNew.CompanyID);
+
+                        //Adding refernces
+                        AddressIn.Company = existingCompany;
+
+
+                        if (AddressIn.EntityState == EntityState.Detached)
+                        {
+                            context.Addresses.AddObject(AddressIn);
+                        }
+
+                        context.SaveChanges();
+
+                    }
+
+                }
+
+                catch (Exception e)
+                {
+                    transaction.Dispose();
+                    check = false;
+                    return check;
+
+
+                }
+                transaction.Complete();
+                check = true;
+                return check;
+
+
+            }
+
+            return check;
         }
 
-    }
+
+        //Method that gets all the Addresses by CompanyID
+        public static List<DTOAddressToShow> GetAddressesByCompanyID(int companyID)
+        {
+            List<DTOAddressToShow> AddressesListOut = new List<DTOAddressToShow>();
+            List<Address> AddressListDB = new List<Address>();
+
+            using (var context = new RFQEntities())
+            {
+                AddressListDB = (from adr in context.Addresses.Include("Company")
+                            where adr.Company.CompanyID == companyID
+                            select adr).ToList();
+            }
+
+            if (AddressListDB.Count > 0)
+            {
+                foreach (var adr in AddressListDB)
+                {
+                    DTOAddressToShow AddressRow = new DTOAddressToShow();
+                    AddressRow.AddressID = adr.AddressID;
+                    AddressRow.CompanyID = companyID;
+                    AddressRow.Address1 = adr.Address1;
+                    AddressRow.Address2 = adr.Address2;
+                    AddressRow.City = adr.City;
+                    AddressRow.State = adr.State;
+                    AddressRow.PostalCode = adr.PostalCode;
+                    AddressRow.Country = adr.Country;
+                    AddressRow.Phone = adr.Phone;
+                    AddressRow.Fax = adr.Fax;
+                    AddressRow.Email = adr.Email;
+
+                    AddressesListOut.Add(AddressRow);
+                    
+                }
+            }
+
+            return AddressesListOut;
+        }
+        
+
+         //Method that creates new Quotation 
+        public static bool CreateNewQuoation(DTOQuoteToShow QuoteNew)
+        {
+            bool check = false;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+
+                try
+                {
+                    Quote QuoteIn = new Quote();
+                    //Data transfer to the the AddressIn
+                    QuoteIn.StartDate = QuoteNew.StartDate;
+                    QuoteIn.EndDate = QuoteNew.EndDate;
+
+                    using (var context = new RFQEntities())
+                    {
+                        //Finding references for the Foreign Keys
+                        Company existingCompany = context.Companies.Single(q => q.CompanyID == QuoteNew.CompanyID);
+
+                        //Adding refernces
+                        QuoteIn.Company = existingCompany;
+
+
+                        if (QuoteIn.EntityState == EntityState.Detached)
+                        {
+                            context.Quotes.AddObject(QuoteIn);
+                        }
+
+                        context.SaveChanges();
+
+                    }
+
+                }
+
+                catch (Exception e)
+                {
+                    transaction.Dispose();
+                    check = false;
+                    return check;
+
+
+                }
+                transaction.Complete();
+                check = true;
+                return check;
+
+
+            }
+
+        }//End of the method that creates new quotation
+
+
+
+
+
+    }//end of BLL Services Class
+
     public class DTOShowQuoteInfo : DTOQuote
     {
         public override DTOQuote ShowBid()
