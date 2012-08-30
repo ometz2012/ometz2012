@@ -41,6 +41,52 @@ namespace Ometz.RFQ.BLL
         }
     }
 
+    // DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
+    public class DTOUserToShow : DTOUser
+    {
+        private string userN;
+
+        public DTOUserToShow(string userName)
+        {
+            this.userN = userName;
+            User user = new User();
+            using (var context = new RFQEntities())
+            {
+                user = (User)(from usr in context.Users.Include("Company")
+                              where usr.UserName == userN
+                              select usr).First();
+            }
+
+            if (user != null)
+            {
+                this.UserID = user.UserID;
+                this.UserName = user.UserName;
+                this.Password = user.Password;
+                this.CompanyID = user.Company.CompanyID;
+            }
+
+
+        }
+
+
+        public override bool PasswordValidation(string passwordEntered, string passwordDB)
+        {
+            bool check = false;
+
+            if (passwordEntered == passwordDB)
+            {
+                check = true;
+            }
+
+            return check;
+        }
+    }
+
+    // END ----DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
+
+
+
+
     public class BLLServices
     {
 

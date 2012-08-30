@@ -108,5 +108,18 @@ namespace Ometz.RFQ.BLL.Model
 
         public abstract string GetQuote(int QuoteID);
     }
+
+    public abstract class DTOUser
+    {
+        public int UserID { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public int CompanyID { get; set; }
+
+        public abstract bool PasswordValidation(string passwordEntered, string passwordDB);
+
+    }
+
+
     
 }
