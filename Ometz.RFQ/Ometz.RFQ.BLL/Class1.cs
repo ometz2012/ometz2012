@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Ometz.RFQ.DAL;
 using Ometz.RFQ.BLL.Model;
+using System.Transactions;
+using System.Data;
 
 namespace Ometz.RFQ.BLL
 {
@@ -117,7 +119,7 @@ namespace Ometz.RFQ.BLL
             return CompanyToReturn;
         }
 
-        //Method that check if the user name exists in the DataBase
+        //Method that checks if the user name exists in the DataBase
         public static bool CheckUserNameExists(string userName)
         {
             bool check = false;
@@ -134,6 +136,57 @@ namespace Ometz.RFQ.BLL
                 check = true;
 
             return check;
+        }
+
+        //Method that creates new Company
+        public static bool CreateNewSupplier(DTOCompanyToShow NewSupplier)
+        {
+            bool check = false;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+
+                try
+                {
+                    Company CompanyNew = new Company();
+                    //Data transfer to the new company
+                    CompanyNew.Name = NewSupplier.Name;
+
+
+                    using (var context = new RFQEntities())
+                    {
+                        //Finding references for the Foreign Keys
+                        Category existingCategory = context.Categories.Single(p => p.CategoryID == NewSupplier.CategoryID);
+                        CompanyType existingCompanyType = context.CompanyTypes.Single(p => p.CompanyTypeID == NewSupplier.CompanyTypeID);
+                        //Adding refernces
+                        CompanyNew.Category = existingCategory;
+                        CompanyNew.CompanyType = existingCompanyType;
+
+                        if (CompanyNew.EntityState == EntityState.Detached)
+                        {
+                            context.Companies.AddObject(CompanyNew);
+                        }
+
+                        context.SaveChanges();
+
+                    }
+
+                }
+
+                catch (Exception e)
+                {
+                    transaction.Dispose();
+                    check = false;
+                    return check;
+
+
+                }
+                transaction.Complete();
+                check = true;
+                return check;
+
+
+            }
+
         }
 
     }
