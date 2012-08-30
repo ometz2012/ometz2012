@@ -116,5 +116,25 @@ namespace Ometz.RFQ.BLL
 
             return CompanyToReturn;
         }
+
+        //Method that check if the user name exists in the DataBase
+        public static bool CheckUserNameExists(string userName)
+        {
+            bool check = false;
+
+            List<User> userList = new List<User>();
+            using (var context = new RFQEntities())
+            {
+                userList = (from usr in context.Users.Include("Company")
+                            where usr.UserName == userName
+                            select usr).ToList();
+            }
+
+            if (userList.Count > 0)
+                check = true;
+
+            return check;
+        }
+
     }
 }
