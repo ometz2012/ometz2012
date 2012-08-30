@@ -108,5 +108,5 @@ namespace Ometz.RFQ.BLL.Model
 
         public abstract string GetQuote(int QuoteID);
     }
-    }
+    
 }
