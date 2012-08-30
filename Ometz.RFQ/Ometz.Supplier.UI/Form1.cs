@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Ometz.RFQ.BLL;
 
 namespace Ometz.Supplier.UI
 {
@@ -14,6 +15,12 @@ namespace Ometz.Supplier.UI
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DTOShowQuoteInfo showQuotes = new DTOShowQuoteInfo();
+
         }
     }
 }

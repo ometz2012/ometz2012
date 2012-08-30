@@ -190,4 +190,28 @@ namespace Ometz.RFQ.BLL
         }
 
     }
+    public class DTOShowQuoteInfo : DTOQuote
+    {
+        public override DTOQuote ShowBid()
+{
+ 	
+            using (var context = new RFQEntities())
+            {
+                var quotes = (from quote in context.Quotes
+                                  select quote).ToList();
+                
+
+            DTOQuote quotesToReturn;
+            quotesToReturn.QuoteID = quotes[0].QuoteID;
+            }
+       /*  using (var context = new EntityFrameworkEntities())
+            {
+                var result = (from c in context.Customers
+                              select c).ToList();
+                dgvCustomer.DataSource = result;*/
+
+            }
+
+    }
+    }
 }

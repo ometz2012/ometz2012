@@ -21,7 +21,7 @@ namespace Ometz.RFQ.BLL.Model
   
     }
 
-    public abstract class DTOQoute
+    public abstract class DTOQuote
     {
         public int QuoteID
         { get; set; }
@@ -36,6 +36,7 @@ namespace Ometz.RFQ.BLL.Model
         { get; set; }
 
         public abstract string GetCompany(int CompanyID);
+        public virtual DTOQuote ShowBid();
     }
 
     public abstract class DTOQuoteBid
