@@ -22,5 +22,10 @@ namespace Ometz.Supplier.UI
             DTOShowQuoteInfo showQuotes = new DTOShowQuoteInfo();
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

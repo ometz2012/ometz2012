@@ -13,7 +13,7 @@ namespace Ometz.RFQ.BLL
     {
 
 
-        
+
     }
 
     public class DTOCompanyToShow : DTOCompany
@@ -35,7 +35,7 @@ namespace Ometz.RFQ.BLL
 
 
         //}
-        
+
     }
 
     // DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
@@ -81,18 +81,18 @@ namespace Ometz.RFQ.BLL
 
 
     //  DTO ADDRESS TO SHOW
-      public class DTOAddressToShow : DTOAddress
+    public class DTOAddressToShow : DTOAddress
     {
 
     }
 
-      //----DTO--Quote--------------
+    //----DTO--Quote--------------
     public class DTOQuoteToShow : DTOQuote
     {
 
     }
 
-   //------Quote--Detail ---   
+    //------Quote--Detail ---   
     public class DTOQuoteDetailToCreate : DTOQuoteDetail
     {
 
@@ -108,9 +108,9 @@ namespace Ometz.RFQ.BLL
 
     //DTO Participant
 
-      public class DTOParticipantToShow:DTOQuoteParticipant
+    public class DTOParticipantToShow : DTOQuoteParticipant
     {
- 
+
     }
 
 
@@ -218,7 +218,7 @@ namespace Ometz.RFQ.BLL
 
         }//End of Create New Company Method
 
-          //Method that creates new Address for specific Company
+        //Method that creates new Address for specific Company
         public static bool CreateNewAddress(DTOAddressToShow AddressNew)
         {
             bool check = false;
@@ -287,8 +287,8 @@ namespace Ometz.RFQ.BLL
             using (var context = new RFQEntities())
             {
                 AddressListDB = (from adr in context.Addresses.Include("Company")
-                            where adr.Company.CompanyID == companyID
-                            select adr).ToList();
+                                 where adr.Company.CompanyID == companyID
+                                 select adr).ToList();
             }
 
             if (AddressListDB.Count > 0)
@@ -309,15 +309,15 @@ namespace Ometz.RFQ.BLL
                     AddressRow.Email = adr.Email;
 
                     AddressesListOut.Add(AddressRow);
-                    
+
                 }
             }
 
             return AddressesListOut;
         }
-        
 
-         //Method that creates new Quotation 
+
+        //Method that creates new Quotation 
         public static bool CreateNewQuoation(DTOQuoteToShow QuoteNew)
         {
             bool check = false;
@@ -369,7 +369,7 @@ namespace Ometz.RFQ.BLL
         }//End of the method that creates new quotation
 
 
-          //Method that adds new details row to the QuoteDetail
+        //Method that adds new details row to the QuoteDetail
         public static bool CreateNewQuoteDetail(DTOQuoteDetailToCreate QuoteDetailNew)
         {
             bool check = false;
@@ -420,7 +420,7 @@ namespace Ometz.RFQ.BLL
 
         }
 
-         //Method that gets all the quotes by companyID 
+        //Method that gets all the quotes by companyID 
         //Arranges them from the new to the old by QuoteID
         //And presents them with their details
         //Quotes with no details will show "No Details" and Value "0"
@@ -432,13 +432,16 @@ namespace Ometz.RFQ.BLL
                 var results = (from quote in context.Quotes
                                join quoteDet in context.QuoteDetails
                                on quote.QuoteID equals quoteDet.Quote.QuoteID into qq
-                               orderby  quote.QuoteID descending
+                               orderby quote.QuoteID descending
                                from quoteDet in qq.DefaultIfEmpty()
-                               select new { QuoteID = quote.QuoteID,
+                               select new
+                               {
+                                   QuoteID = quote.QuoteID,
                                    StartDate = quote.StartDate,
                                    EndDate = quote.EndDate,
                                    QuoteDetails = quoteDet.Text == null ? "(No Details)" : quoteDet.Text,
-                                   Value = quoteDet.Value == null ? 0m : quoteDet.Value}).ToList();
+                                   Value = quoteDet.Value == null ? 0m : quoteDet.Value
+                               }).ToList();
                 foreach (var item in results)
                 {
                     DTOQuoteDetailToShow row = new DTOQuoteDetailToShow();
@@ -452,17 +455,17 @@ namespace Ometz.RFQ.BLL
                 }
             }
 
-            
+
 
             return ListofQuoteDetails;
         }
 
 
-         //Method that adds list of suppliers (Participants) to the quotaion Suppliers=Companies
+        //Method that adds list of suppliers (Participants) to the quotaion Suppliers=Companies
         // Method takes list of integers with companyIDs and the quotation ID
         public static bool AddSuppliersToQuotation(List<DTOParticipantToShow> particpantsList)
         {
-            bool check=false;
+            bool check = false;
             using (TransactionScope transaction = new TransactionScope())
             {
 
@@ -471,14 +474,14 @@ namespace Ometz.RFQ.BLL
 
                     using (var context = new RFQEntities())
                     {
-                       
+
 
                         foreach (var item in particpantsList)
                         {
                             QuoteParticipant QuoteParticipantIn = new QuoteParticipant();
 
-                             //Finding references for the Foreign Keys - QUOTE
-                        Quote existingQuote = context.Quotes.Single(q => q.QuoteID ==item.QuoteID);
+                            //Finding references for the Foreign Keys - QUOTE
+                            Quote existingQuote = context.Quotes.Single(q => q.QuoteID == item.QuoteID);
 
                             //retriving references for the Foreign Key- Company
                             Company existingCompany = context.Companies.Single(comp => comp.CompanyID == item.CompanyID);
@@ -490,7 +493,7 @@ namespace Ometz.RFQ.BLL
                                                                        select p).ToList();
                             if (existParticipant.Count > 0)
                             {
-                                
+
                             }
                             else
                             {
@@ -505,10 +508,10 @@ namespace Ometz.RFQ.BLL
                                 }
 
                                 context.SaveChanges();
- 
+
                             }
 
-                            
+
 
                         }//end foreach
 
@@ -517,7 +520,7 @@ namespace Ometz.RFQ.BLL
                 }
                 catch (DataExistis de)
                 {
- 
+
                 }
 
                 catch (Exception e)
@@ -534,7 +537,7 @@ namespace Ometz.RFQ.BLL
 
 
             }
-     }
+        }
 
 
         //Method that removes suppliers (Participants) from quotation
@@ -550,27 +553,27 @@ namespace Ometz.RFQ.BLL
 
                     using (var context = new RFQEntities())
                     {
-                      
+
                         foreach (var item in participantIDList)
                         {
-                            
+
 
                             QuoteParticipant QuoteParticipantOut = (from part in context.QuoteParticipants
-                                                                        where part.QuoteParticipantID==item.QuoteParticipantID
-                                                                        select part).First();
-                        
+                                                                    where part.QuoteParticipantID == item.QuoteParticipantID
+                                                                    select part).First();
+
 
                             if (QuoteParticipantOut != null)
                             {
                                 context.DeleteObject(QuoteParticipantOut);
                                 context.SaveChanges();
- 
+
                             }
-                           
+
 
                         }//foreach
 
-                     }//using
+                    }//using
 
                 }//try
 
@@ -588,7 +591,7 @@ namespace Ometz.RFQ.BLL
 
 
             }//transaction
- 
+
         }//method
 
 
@@ -603,15 +606,15 @@ namespace Ometz.RFQ.BLL
 
 
     //Exceptions
-#region Exceptions
-      public class DataExistis : Exception
+    #region Exceptions
+    public class DataExistis : Exception
     {
- 
+
     }
 
 
 
-#endregion
+    #endregion
 
 
 
@@ -619,26 +622,26 @@ namespace Ometz.RFQ.BLL
 
     public class DTOShowQuoteInfo : DTOQuote
     {
-        public override DTOQuote ShowBid()
-{
- 	
-            using (var context = new RFQEntities())
-            {
-                var quotes = (from quote in context.Quotes
-                                  select quote).ToList();
+        // public override DTOQuote;
+
+
+        /* using (var context = new RFQEntities())
+         {
+             var quotes = (from quote in context.Quotes
+                               select quote).ToList();
                 
 
-            DTOQuote quotesToReturn;
-            quotesToReturn.QuoteID = quotes[0].QuoteID;
-            }
-       /*  using (var context = new EntityFrameworkEntities())
-            {
-                var result = (from c in context.Customers
-                              select c).ToList();
-                dgvCustomer.DataSource = result;*/
+         DTOQuote quotesToReturn;
+       //  quotesToReturn.QuoteID = quotes[0].QuoteID;
+         }
+    /*  using (var context = new EntityFrameworkEntities())
+         {
+             var result = (from c in context.Customers
+                           select c).ToList();
+             dgvCustomer.DataSource = result;*/
 
-            }
 
-    }
+
     }
 }
+
