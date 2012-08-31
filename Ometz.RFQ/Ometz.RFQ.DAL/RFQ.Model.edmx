@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RFQModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="RFQModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="RFQModelStoreContainer">
           <EntitySet Name="Address" EntityType="RFQModel.Store.Address" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Category" EntityType="RFQModel.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -113,6 +113,7 @@
           <Property Name="CompanyID" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
           <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="QuoteBid">
           <Key>
@@ -312,8 +313,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RFQModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -440,6 +440,7 @@
           <NavigationProperty Name="QuoteDetails" Relationship="RFQModel.FK_QuoteDetail_Quote" FromRole="Quote" ToRole="QuoteDetail" />
           <NavigationProperty Name="QuoteParticipants" Relationship="RFQModel.FK_QuoteParticipant_Quote" FromRole="Quote" ToRole="QuoteParticipant" />
           <NavigationProperty Name="QuoteWinners" Relationship="RFQModel.FK_QuoteWinner_Quote" FromRole="Quote" ToRole="QuoteWinner" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
         </EntityType>
         <EntityType Name="QuoteBid">
           <Key>
@@ -682,7 +683,8 @@
             <ScalarProperty Name="Type" ColumnName="Type" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Quotes"><EntityTypeMapping TypeName="RFQModel.Quote"><MappingFragment StoreEntitySet="Quote">
-            <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
             <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
             <ScalarProperty Name="StartDate" ColumnName="StartDate" />
             <ScalarProperty Name="EndDate" ColumnName="EndDate" />

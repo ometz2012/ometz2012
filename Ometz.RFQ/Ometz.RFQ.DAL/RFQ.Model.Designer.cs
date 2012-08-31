@@ -1259,13 +1259,15 @@ namespace Ometz.RFQ.DAL
         /// <param name="companyID">Initial value of the CompanyID property.</param>
         /// <param name="startDate">Initial value of the StartDate property.</param>
         /// <param name="endDate">Initial value of the EndDate property.</param>
-        public static Quote CreateQuote(global::System.Int32 quoteID, global::System.Int32 companyID, global::System.DateTime startDate, global::System.DateTime endDate)
+        /// <param name="status">Initial value of the Status property.</param>
+        public static Quote CreateQuote(global::System.Int32 quoteID, global::System.Int32 companyID, global::System.DateTime startDate, global::System.DateTime endDate, global::System.Boolean status)
         {
             Quote quote = new Quote();
             quote.QuoteID = quoteID;
             quote.CompanyID = companyID;
             quote.StartDate = startDate;
             quote.EndDate = endDate;
+            quote.Status = status;
             return quote;
         }
 
@@ -1370,6 +1372,30 @@ namespace Ometz.RFQ.DAL
         private global::System.DateTime _EndDate;
         partial void OnEndDateChanging(global::System.DateTime value);
         partial void OnEndDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Boolean _Status;
+        partial void OnStatusChanging(global::System.Boolean value);
+        partial void OnStatusChanged();
 
         #endregion
     
