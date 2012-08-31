@@ -106,9 +106,9 @@ namespace Ometz.RFQ.BLL.Model
         public int QuoteID
         { get; set; }
 
-        public abstract string GetCompany(int CompanyID);
+        //public abstract string GetCompany(int CompanyID);
 
-        public abstract string GetQuote(int QuoteID);
+        //public abstract string GetQuote(int QuoteID);
     }
 
     public abstract class DTOQuoteWinner
