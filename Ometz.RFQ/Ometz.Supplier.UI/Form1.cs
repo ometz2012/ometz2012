@@ -17,15 +17,15 @@ namespace Ometz.Supplier.UI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DTOShowQuoteInfo showQuotes = new DTOShowQuoteInfo();
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    DTOShowQuoteInfo showQuotes = new DTOShowQuoteInfo();
 
-        }
+        //}
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        //private void Form1_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

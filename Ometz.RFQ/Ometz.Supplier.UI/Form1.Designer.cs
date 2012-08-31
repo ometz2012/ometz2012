@@ -49,7 +49,7 @@
             this.btnShowBids.TabIndex = 1;
             this.btnShowBids.Text = "ShowBids";
             this.btnShowBids.UseVisualStyleBackColor = true;
-            this.btnShowBids.Click += new System.EventHandler(this.button1_Click);
+            //this.btnShowBids.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -60,7 +60,7 @@
             this.Controls.Add(this.dgvBidsInfo);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidsInfo)).EndInit();
             this.ResumeLayout(false);
 
