@@ -40,71 +40,41 @@ namespace Ometz.RFQ.BLL.Model
 
     public abstract class DTOQuote
     {
-        public int QuoteID
-        { get; set; }
-
-        public int CompanyID
-        { get; set; }
-
-        public DateTime StartDate
-        { get; set; }
-
-        public DateTime EndDate
-        { get; set; }
-
+        public int QuoteID{ get; set; }
+        public int CompanyID{ get; set; }
+        public DateTime StartDate{ get; set; }
+        public DateTime EndDate{ get; set; }
         //public abstract string GetCompany(int CompanyID);
         //public virtual DTOQuote ShowBid();
     }
 
     public abstract class DTOQuoteBid
     {
-        public int QuoteBidID
-        { get; set; }
-
-        public int QuoteID
-        { get; set; }
-
-        public int QuoteParticipantID
-        { get; set; }
-
-        public decimal Amount
-        { get; set; }
-
-        public string Notes
-        { get; set; }
+        public int QuoteBidID{ get; set; }
+        public int QuoteID{ get; set; }
+        public int QuoteParticipantID { get; set; }
+        public decimal Amount { get; set; }
+        public string Notes{ get; set; }
 
         public abstract string GetQuote(int QuoteID);
-
         public abstract string GetQuoteParticipant(int QuoteParticipantID);
     }
 
     public abstract class DTOQuoteDetail
     {
-        public int QuoteDetailID
-        { get; set; }
-
-        public int QuoteID
-        { get; set; }
-
-        public string Text
-        { get; set; }
-
-        public decimal Value
-        { get; set; }
+        public int QuoteDetailID{ get; set; }
+        public int QuoteID { get; set; }
+        public string Text{ get; set; }
+        public decimal Value{ get; set; }
 
         //public abstract string GetQuote(int QuoteID);
     }
 
     public abstract class DTOQuoteParticipant
     {
-        public int QuoteParticipantID
-        { get; set; }
-
-        public int CompanyID
-        { get; set; }
-
-        public int QuoteID
-        { get; set; }
+        public int QuoteParticipantID{ get; set; }
+        public int CompanyID{ get; set; }
+        public int QuoteID{ get; set; }
 
         //public abstract string GetCompany(int CompanyID);
 
@@ -113,17 +83,11 @@ namespace Ometz.RFQ.BLL.Model
 
     public abstract class DTOQuoteWinner
     {
-        public int QuoteWinnerID
-        { get; set; }
-
-        public int CompanyID
-        { get; set; }
-
-        public int QuoteID
-        { get; set; }
+        public int QuoteWinnerID{ get; set; }
+        public int CompanyID { get; set; }
+        public int QuoteID{ get; set; }
 
         public abstract string GetCompany(int CompanyID);
-
         public abstract string GetQuote(int QuoteID);
     }
 
@@ -137,7 +101,4 @@ namespace Ometz.RFQ.BLL.Model
         public abstract bool PasswordValidation(string passwordEntered, string passwordDB);
 
     }
-
-
-    
 }
