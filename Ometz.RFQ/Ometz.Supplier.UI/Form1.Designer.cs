@@ -40,6 +40,7 @@
             this.dgvBidsInfo.Name = "dgvBidsInfo";
             this.dgvBidsInfo.Size = new System.Drawing.Size(240, 150);
             this.dgvBidsInfo.TabIndex = 0;
+            this.dgvBidsInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBidsInfo_CellContentClick);
             // 
             // btnShowBids
             // 
@@ -49,7 +50,6 @@
             this.btnShowBids.TabIndex = 1;
             this.btnShowBids.Text = "ShowBids";
             this.btnShowBids.UseVisualStyleBackColor = true;
-            //this.btnShowBids.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -60,7 +60,6 @@
             this.Controls.Add(this.dgvBidsInfo);
             this.Name = "Form1";
             this.Text = "Form1";
-            //this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidsInfo)).EndInit();
             this.ResumeLayout(false);
 

@@ -17,6 +17,11 @@ namespace Ometz.Supplier.UI
             InitializeComponent();
         }
 
+        private void dgvBidsInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         //private void button1_Click(object sender, EventArgs e)
         //{
         //    DTOShowQuoteInfo showQuotes = new DTOShowQuoteInfo();
