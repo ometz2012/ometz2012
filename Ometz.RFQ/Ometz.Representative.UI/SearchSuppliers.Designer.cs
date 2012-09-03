@@ -50,9 +50,9 @@
             // gridSuppliers
             // 
             this.gridSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSuppliers.Location = new System.Drawing.Point(52, 53);
+            this.gridSuppliers.Location = new System.Drawing.Point(52, 36);
             this.gridSuppliers.Name = "gridSuppliers";
-            this.gridSuppliers.Size = new System.Drawing.Size(465, 48);
+            this.gridSuppliers.Size = new System.Drawing.Size(465, 101);
             this.gridSuppliers.TabIndex = 1;
             // 
             // txtSupplierSearch
@@ -64,7 +64,7 @@
             // 
             // buttonLoadSuppliers
             // 
-            this.buttonLoadSuppliers.Location = new System.Drawing.Point(216, 118);
+            this.buttonLoadSuppliers.Location = new System.Drawing.Point(216, 143);
             this.buttonLoadSuppliers.Name = "buttonLoadSuppliers";
             this.buttonLoadSuppliers.Size = new System.Drawing.Size(123, 23);
             this.buttonLoadSuppliers.TabIndex = 3;

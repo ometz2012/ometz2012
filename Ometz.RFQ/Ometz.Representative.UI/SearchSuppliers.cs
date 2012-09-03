@@ -48,11 +48,11 @@ namespace Ometz.Representative.UI
         {
 
 
-            IBLLServices BllFunction = new BLLServices();
+            //IBLLServices BllFunction = new BLLServices();
 
-            List<DTOCompanyToShow> ListOfCompanies = BllFunction.GetCompanies();
+            //List<DTOCompanyNameToShow> ListOfCompanies = BllFunction.GetCompanies();
 
-            gridSuppliers.DataSource = ListOfCompanies;
+            //gridSuppliers.DataSource = ListOfCompanies;
 
         }
 

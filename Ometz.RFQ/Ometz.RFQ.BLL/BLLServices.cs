@@ -214,30 +214,38 @@ namespace Ometz.RFQ.BLL
         }
 
         //Dory -- Get Company By Name Method
-        public DTOCompanyNameToShow GetCompanyByName(string Name)
-        {
-            Company CompanySpecific = new Company();
-            string path = "Category";
-            string path1 = "CompanyType";
+        //public DTOCompanyNameToShow GetCompanyByName(string Name)
+        //{
+        //    Company CompanySpecific = new Company();
+        //    string path = "Category";
+        //    string path1 = "CompanyType";
 
-            using (var context = new RFQEntities())
-            {
-                CompanySpecific = (from comp in context.Companies.Include(path).Include(path1)
-                                   where comp.Name == (txtSupplierSearch.Text)ToString()
-                                   select comp).First();
+        //    using (var context = new RFQEntities())
+        //    {
 
+        //        CompanySpecific = (from comp in context.Companies
+        //                           where comp.Name.Contains(txtSupplierSearch.Text)
+        //                           orderby e.CustomerID
+        //                           select comp).First();
 
-            }
-
-            DTOCompanyNameToShow CompanyToReturn = new DTOCompanyNameToShow();
-            CompanyToReturn.Name = CompanySpecific.Name;
-            CompanyToReturn.CategoryID = CompanySpecific.Category.CategoryID;
-            CompanyToReturn.CompanyTypeID = CompanySpecific.CompanyType.CompanyTypeID;
-
+        //        //CompanySpecific = (from e in context.Name
+        //        //                   where e.FirstName.Contains(txtSupplierSearch.Text) //|| e.LastName.Contains(text)
+        //        //                   orderby e.CustomerID
+        //        //                   select e).Skip(toSkip).Take(toTake).ToList();
 
 
-            return CompanyToReturn;
-        }
+        //    }
+
+        //    DTOCompanyNameToShow CompanyToReturn = new DTOCompanyNameToShow();
+  
+        //    CompanyToReturn.Name = CompanySpecific.Name;
+        //    CompanyToReturn.CategoryID = CompanySpecific.Category.CategoryID;
+        //    CompanyToReturn.CompanyTypeID = CompanySpecific.CompanyType.CompanyTypeID;
+
+
+
+        //    return CompanyToReturn;
+        //}
 
 
         //Method that gets all the Addresses by CompanyID

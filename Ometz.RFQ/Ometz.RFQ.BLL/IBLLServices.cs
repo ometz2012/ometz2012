@@ -11,7 +11,7 @@ namespace Ometz.RFQ.BLL
         List<DTOCompanyToShow> GetCompanies();
 
         //Get Company By Name Method
-        DTOCompanyNameToShow GetCompanyByName(string Name);
+        //DTOCompanyNameToShow GetCompanyByName(string Name);
         
      //Get Company By ID Method
          DTOCompanyToShow GetCompanyByID(int CompanyID);
