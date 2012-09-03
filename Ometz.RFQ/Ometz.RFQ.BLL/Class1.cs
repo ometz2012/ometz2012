@@ -38,6 +38,12 @@ namespace Ometz.RFQ.BLL
 
     }
 
+    public class DTOCompanyNameToShow : DTOCompany
+    {
+        
+
+    }
+
     // DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
     public class DTOUserToShow : DTOUser
     {

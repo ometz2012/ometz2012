@@ -213,7 +213,31 @@ namespace Ometz.RFQ.BLL
             return CompanyList;
         }
 
+        //Dory -- Get Company By Name Method
+        public DTOCompanyNameToShow GetCompanyByName(string Name)
+        {
+            Company CompanySpecific = new Company();
+            string path = "Category";
+            string path1 = "CompanyType";
 
+            using (var context = new RFQEntities())
+            {
+                CompanySpecific = (from comp in context.Companies.Include(path).Include(path1)
+                                   where comp.Name == (txtSupplierSearch.Text)ToString()
+                                   select comp).First();
+
+
+            }
+
+            DTOCompanyNameToShow CompanyToReturn = new DTOCompanyNameToShow();
+            CompanyToReturn.Name = CompanySpecific.Name;
+            CompanyToReturn.CategoryID = CompanySpecific.Category.CategoryID;
+            CompanyToReturn.CompanyTypeID = CompanySpecific.CompanyType.CompanyTypeID;
+
+
+
+            return CompanyToReturn;
+        }
 
 
         //Method that gets all the Addresses by CompanyID

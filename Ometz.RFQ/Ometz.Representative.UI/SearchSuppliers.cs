@@ -29,7 +29,7 @@ namespace Ometz.Representative.UI
 
         private void SearchSuppliers_Load(object sender, EventArgs e)
         {
-            SupplierLoadData();
+            //SupplierLoadData();
         }
 
 
@@ -42,6 +42,18 @@ namespace Ometz.Representative.UI
             gridSuppliers.DataSource = ListOfCompanies;
             
         
+        }
+
+        private void btnSupplierSearch_Click(object sender, EventArgs e)
+        {
+
+
+            IBLLServices BllFunction = new BLLServices();
+
+            List<DTOCompanyToShow> ListOfCompanies = BllFunction.GetCompanies();
+
+            gridSuppliers.DataSource = ListOfCompanies;
+
         }
 
        
