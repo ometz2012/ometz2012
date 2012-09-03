@@ -22,15 +22,22 @@ namespace Ometz.Supplier.UI
 
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    DTOShowQuoteInfo showQuotes = new DTOShowQuoteInfo();
+        private void btnShowBids_Click(object sender, EventArgs e)
+        {
+            DTOQuoteToShow quotesToShow = new DTOQuoteToShow();
+            dgvBidsInfo.DataSource = quotesToShow.DTO_BidToShow();
+            
+        }
 
-        //}
+        private void btnShowMyBids_Click(object sender, EventArgs e)
+        {
+            //DTOQuoteToShow quotesToShow = new DTOQuoteToShow();
+            // 1 is a companyID
+          // dgvBidsInfo.DataSource = quotesToShow.DTO_BidToShow(1);
+            DTOShowQuoteBid bidsToShow = new DTOShowQuoteBid();
+            dgvBidsInfo.DataSource = bidsToShow.ShowParticipantBids(2); // 2 is a participant ID
+        }
 
-        //private void Form1_Load(object sender, EventArgs e)
-        //{
-
-        //}
+       
     }
 }

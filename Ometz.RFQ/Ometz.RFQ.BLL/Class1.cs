@@ -93,10 +93,10 @@ namespace Ometz.RFQ.BLL
     }
 
     //----DTO--Quote--------------
-    public class DTOQuoteToShow : DTOQuote
+   /* public class DTOQuoteToShow : DTOQuote
     {
 
-    }
+    }*/
 
     //------Quote--Detail ---   
     public class DTOQuoteDetailToCreate : DTOQuoteDetail

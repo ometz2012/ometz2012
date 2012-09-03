@@ -556,11 +556,7 @@ namespace Ometz.RFQ.BLL
 
         }//method
 
-
-
-
-
-
+     
 
 
     }//end of BLL Services Class

@@ -44,6 +44,7 @@ namespace Ometz.RFQ.BLL.Model
         public int CompanyID{ get; set; }
         public DateTime StartDate{ get; set; }
         public DateTime EndDate{ get; set; }
+        public bool Status { get; set; }
         //public abstract string GetCompany(int CompanyID);
         //public virtual DTOQuote ShowBid();
     }
@@ -56,8 +57,8 @@ namespace Ometz.RFQ.BLL.Model
         public decimal Amount { get; set; }
         public string Notes{ get; set; }
 
-        public abstract string GetQuote(int QuoteID);
-        public abstract string GetQuoteParticipant(int QuoteParticipantID);
+      //  public abstract string GetQuote(int QuoteID);
+       // public abstract string GetQuoteParticipant(int QuoteParticipantID);
     }
 
     public abstract class DTOQuoteDetail

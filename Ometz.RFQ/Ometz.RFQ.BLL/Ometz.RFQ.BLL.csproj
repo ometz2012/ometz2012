@@ -47,6 +47,8 @@
     <Compile Include="BLLServices.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="IBLLServices.cs" />
+    <Compile Include="Ometz.RFQ.Bids.BLL.cs" />
+    <Compile Include="Ometz.RFQ.Quotes.BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
