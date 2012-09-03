@@ -79,7 +79,7 @@
     <EmbeddedResource Include="SearchSuppliers.resx">
       <DependentUpon>SearchSuppliers.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="App.Config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,9 +91,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ometz.RFQ.DAL\Ometz.RFQ.DAL.csproj">
-      <Project>{6B67BF85-4FD8-407C-A84D-D4E0B9417E4B}</Project>
-      <Name>Ometz.RFQ.DAL</Name>
+    <ProjectReference Include="..\Ometz.RFQ.BLL.Model\Ometz.RFQ.BLL.Model.csproj">
+      <Project>{6C4710F6-0639-446D-86B0-743FA6C28DC4}</Project>
+      <Name>Ometz.RFQ.BLL.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ometz.RFQ.BLL\Ometz.RFQ.BLL.csproj">
+      <Project>{518476AD-13AD-4335-A771-4F2E52CC3846}</Project>
+      <Name>Ometz.RFQ.BLL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

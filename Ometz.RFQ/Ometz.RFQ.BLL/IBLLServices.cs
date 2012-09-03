@@ -7,8 +7,8 @@ namespace Ometz.RFQ.BLL
 {
     public interface IBLLServices
     {
-        // Method that gets all Companies
-        List<DTOAllCompaniesToShow> GetAddressesByCompanyID(int companyID);
+       // Method that gets all Companies
+        List<DTOCompanyToShow> GetCompanies();
         
      //Get Company By ID Method
          DTOCompanyToShow GetCompanyByID(int CompanyID);

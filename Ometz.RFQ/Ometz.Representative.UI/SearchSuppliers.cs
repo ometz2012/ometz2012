@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Ometz.RFQ.DAL;
+using Ometz.RFQ.BLL;
+using Ometz.RFQ.BLL.Model;
+
 
 
 namespace Ometz.Representative.UI
@@ -19,44 +21,31 @@ namespace Ometz.Representative.UI
             
         }
 
+        private void buttonLoadSuppliers_Click(object sender, EventArgs e)
+        {
+            SupplierLoadData();
+        }
+
+
         private void SearchSuppliers_Load(object sender, EventArgs e)
         {
             SupplierLoadData();
         }
 
 
-
-
-        //private void LoadData()
-        //{
-        //    List<Company> listOfCompanies = null;
-        //    using (var context = new RFQEntities())
-        //    { 
-
-        //    listOfCompanies = (from e in context.Companies
-        //                      select e).ToList();
-
-        //    }
-        //    gridSuppliers.DataSource = listOfCompanies;
-        //}
-
-
-
-
         private void SupplierLoadData()
         {
             IBLLServices BllFunction = new BLLServices();
-            DTOCompanyToShow = BllFunction.GetCompanyByID(1);
 
-            List<CompanyToShow> listOfCompanies = BllFunction.DTOAllCompaniesToShow;
+            List<DTOCompanyToShow> ListOfCompanies = BllFunction.GetCompanies();
+
+            gridSuppliers.DataSource = ListOfCompanies;
             
         
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoadData();
-        }
+       
+     
 
     }
 }

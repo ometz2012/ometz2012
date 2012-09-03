@@ -40,7 +40,7 @@ namespace Ometz.RFQ.BLL
         }
 
         //Method that checks if the user name exists in the DataBase
-      public bool CheckUserNameExists(string userName)
+        public bool CheckUserNameExists(string userName)
         {
             bool check = false;
 
@@ -59,7 +59,7 @@ namespace Ometz.RFQ.BLL
         }
 
         //Method that creates new Company
-      public  bool CreateNewCompany(DTOCompanyToShow CompanyNew)
+        public bool CreateNewCompany(DTOCompanyToShow CompanyNew)
         {
             bool check = false;
             using (TransactionScope transaction = new TransactionScope())
@@ -169,25 +169,55 @@ namespace Ometz.RFQ.BLL
         }
 
         //Dory --- Method that gets all Companies to grid
-        public List<DTOAllCampaniesToShow> GetAddressesByCompanyID(int companyID)
+        public List<DTOCompanyToShow> GetCompanies()
         {
-            List<DTOAllCompaniesToShow> CompanyList = new List<DTOAllCompaniesToShow>();
-            List<Name> AddressListDB = new List<Name>();
+            List<DTOCompanyToShow> CompanyList = new List<DTOCompanyToShow>();
+            string path = "Category";
+            string path1 = "CompanyType";
+
+            
+            
 
             using (var context = new RFQEntities())
             {
-                CompanyListDB = (from adr in context.Names.Include("Company")
-                                 where adr.Company.CompanyID == companyID
-                                 select adr).ToList();
+               var results = (from comp in context.Companies.Include(path).Include(path1)
+                           select new{
+                               CompanyID =comp.CompanyID,
+                           CompanyName=comp.Name,
+                           CategoryID=comp.Category.CategoryID,
+                           CompanyCategory=comp.Category.Type,
+                           CompanyTypeID=comp.CompanyType.CompanyTypeID,
+                           CompanyType = comp.CompanyType.Type}
+                                 ).ToList();
+
+               if (results.Count > 0)
+               {
+                   foreach (var item in results)
+                   {
+                       DTOCompanyToShow CompanyRow = new DTOCompanyToShow();
+                       CompanyRow.CompanyID = item.CompanyID;
+                       CompanyRow.Name = item.CompanyName;
+                       CompanyRow.CompanyTypeID = item.CompanyTypeID;
+                       CompanyRow.CategoryID = item.CategoryID;
+                       CompanyList.Add(CompanyRow);
+
+                   }
+
+               }
             }
 
+
+           
+           
+
+            return CompanyList;
         }
 
 
 
 
         //Method that gets all the Addresses by CompanyID
-       public  List<DTOAddressToShow> GetAddressesByCompanyID(int companyID)
+        public List<DTOAddressToShow> GetAddressesByCompanyID(int companyID)
         {
             List<DTOAddressToShow> AddressesListOut = new List<DTOAddressToShow>();
             List<Address> AddressListDB = new List<Address>();
