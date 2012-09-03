@@ -168,6 +168,23 @@ namespace Ometz.RFQ.BLL
             return check;
         }
 
+        //Dory --- Method that gets all Companies to grid
+        public List<DTOAllCampaniesToShow> GetAddressesByCompanyID(int companyID)
+        {
+            List<DTOAllCompaniesToShow> CompanyList = new List<DTOAllCompaniesToShow>();
+            List<Name> AddressListDB = new List<Name>();
+
+            using (var context = new RFQEntities())
+            {
+                CompanyListDB = (from adr in context.Names.Include("Company")
+                                 where adr.Company.CompanyID == companyID
+                                 select adr).ToList();
+            }
+
+        }
+
+
+
 
         //Method that gets all the Addresses by CompanyID
        public  List<DTOAddressToShow> GetAddressesByCompanyID(int companyID)

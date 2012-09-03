@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Ometz.RFQ.DAL;
 
+
 namespace Ometz.Representative.UI
 {
     public partial class SearchSuppliers : Form
@@ -23,26 +24,32 @@ namespace Ometz.Representative.UI
             SupplierLoadData();
         }
 
-        private void LoadData()
-        {
-            List<Company> listOfCompanies = null;
-            using (var context = new RFQEntities())
-            { 
 
-            listOfCompanies = (from e in context.Companies
-                              select e).ToList();
 
-            }
-            gridSuppliers.DataSource = listOfCompanies;
-        }
+
+        //private void LoadData()
+        //{
+        //    List<Company> listOfCompanies = null;
+        //    using (var context = new RFQEntities())
+        //    { 
+
+        //    listOfCompanies = (from e in context.Companies
+        //                      select e).ToList();
+
+        //    }
+        //    gridSuppliers.DataSource = listOfCompanies;
+        //}
+
+
+
 
         private void SupplierLoadData()
         {
-            using (var context = new RFQEntities())
-            {
+            IBLLServices BllFunction = new BLLServices();
+            DTOCompanyToShow = BllFunction.GetCompanyByID(1);
 
-                gridSuppliers.DataSource = context.GetCompanies();
-            }
+            List<CompanyToShow>
+            
         
         }
 
