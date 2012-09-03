@@ -48,7 +48,7 @@ namespace Ometz.Representative.UI
             IBLLServices BllFunction = new BLLServices();
             DTOCompanyToShow = BllFunction.GetCompanyByID(1);
 
-            List<CompanyToShow>
+            List<CompanyToShow> listOfCompanies = BllFunction.DTOAllCompaniesToShow;
             
         
         }
