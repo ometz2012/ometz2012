@@ -565,7 +565,60 @@ namespace Ometz.RFQ.BLL
         }//method
 
      
+        //Method that terminate RFQ before the Due Date
+        
+        public bool TerminationRFQ (int quoteIDTerminate)
+        {
+        
+            bool check=false;
 
+
+            using (TransactionScope transaction = new TransactionScope())
+            {
+
+                try
+                {
+                   DTOQuoteToTerminate QuoteTerminate=new DTOQuoteToTerminate();
+                    
+                    using (var context = new RFQEntities())
+                    {
+                       
+                      var  quote = (from q in context.Quotes
+                                    where q.QuoteID == quoteIDTerminate
+                                    select q);
+                    
+
+                             if(quote!=null)
+                                {
+                                     foreach (Quote q in quote)
+                                        {
+                                             q.Status=false;
+                        
+                                        }
+                                }
+                      }
+
+                }
+
+                catch (Exception e)
+                {
+                    transaction.Dispose();
+                    check = false;
+                    return check;
+
+
+                }
+                transaction.Complete();
+                check = true;
+                return check;
+
+
+            }
+
+        }
+
+
+    }
 
     }//end of BLL Services Class
-}
+

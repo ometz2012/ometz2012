@@ -745,7 +745,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RFQ.Model">
+      <Diagram Name="RFQ.Model" ZoomLevel="114">
         <EntityTypeShape EntityType="RFQModel.Address" Width="1.5" PointX="5.25" PointY="5.75" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="RFQModel.Category" Width="1.5" PointX="0.75" PointY="9.625" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="RFQModel.Company" Width="1.5" PointX="3" PointY="8.875" Height="3.1340950520833317" IsExpanded="true" />

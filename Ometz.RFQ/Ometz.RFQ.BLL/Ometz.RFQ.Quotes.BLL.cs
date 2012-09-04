@@ -14,6 +14,7 @@ namespace Ometz.RFQ.BLL
     {
         public string Text { get; set; }
         public decimal Value { get; set; }
+        
         public List<DTOQuoteToShow> DTO_BidToShow()
         {
             List<Quote> allQuotes = new List<Quote>();
@@ -100,6 +101,12 @@ namespace Ometz.RFQ.BLL
             return listQuotesOut;
         }
     }
+
+    public class DTOQuoteToTerminate : DTOQuote
+    {
+        public int quoteid { get; set; }
+    }
+
 }
 
 
