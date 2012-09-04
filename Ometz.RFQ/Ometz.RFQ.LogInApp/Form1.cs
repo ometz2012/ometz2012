@@ -35,13 +35,18 @@ namespace Ometz.RFQ.LogInApp
         {
             try
             {
-                if (userName == null)
+                if (userName.Length<1)
                     throw new InvalidUserName();
-                if (password == null)
-                    throw new InvalidPassword();
 
                 IBLLServices BllFunction = new BLLServices();
                 DTOUserToShow user = new DTOUserToShow(userName);
+                if (user == null)
+                    throw new InvalidUserName();
+               
+                if (password.Length<1)
+                    throw new InvalidPassword();
+  
+
                 bool check = user.PasswordValidation(password, user.Password);
 
                 if (check)
@@ -87,7 +92,7 @@ namespace Ometz.RFQ.LogInApp
             catch (InvalidLogIn ili)
             { MessageBox.Show("Login is invalid, please check your password or user name", "app", MessageBoxButtons.OK); }
             catch
-            { }
+            { MessageBox.Show("User Name in is invalid", "app", MessageBoxButtons.OK); }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
