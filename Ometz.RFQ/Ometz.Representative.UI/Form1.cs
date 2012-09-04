@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Ometz.RFQ.BLL;
+using Ometz.RFQ.BLL.Model;
 
 namespace Ometz.Representative.UI
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public Form1(DTOCompanyToShow CompanyLogIn)
         {
             InitializeComponent();
         }

@@ -41,11 +41,11 @@ namespace Ometz.RFQ.BLL
         List<DTOQuoteDetailToShow> GetQuoteDetail(int CompanyID);
 
          //Method that adds list of suppliers (Participants) to the quotaion Suppliers=Companies
-        // Method takes list of integers with companyIDs and the quotation ID
+        // Method takes List<DTOParticipantToShow>
         bool AddSuppliersToQuotation(List<DTOParticipantToShow> particpantsList);
 
         //Method that removes suppliers (Participants) from quotation
-        //Method takes list of integers with ParticipantId
+        //Method takes List<DTOParticipantToShow>
         bool RemoveSuppliersFromQuotation(List<DTOParticipantToShow> participantIDList);
 
 
