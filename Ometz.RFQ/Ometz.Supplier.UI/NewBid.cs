@@ -15,5 +15,15 @@ namespace Ometz.Supplier.UI
         {
             InitializeComponent();
         }
+
+        private void NewBid_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
