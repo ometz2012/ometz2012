@@ -4,3 +4,9 @@ C:\ProjectXXX\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.pdb
 C:\ProjectXXX\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\ProjectXXX\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
 C:\ProjectXXX\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb
+C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll.config
+C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll
+C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.pdb
+C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
+C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb

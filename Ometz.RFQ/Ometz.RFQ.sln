@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.Representative.UI", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.RFQ.LogInApp", "Ometz.RFQ.LogInApp\Ometz.RFQ.LogInApp.csproj", "{AF7F70C7-FDC5-460A-AEE3-832EF4A023EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.RFQ.Authentication", "Ometz.RFQ.Authentication\Ometz.RFQ.Authentication.csproj", "{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,16 @@ Global
 		{AF7F70C7-FDC5-460A-AEE3-832EF4A023EC}.Release|Mixed Platforms.Build.0 = Release|x86
 		{AF7F70C7-FDC5-460A-AEE3-832EF4A023EC}.Release|x86.ActiveCfg = Release|x86
 		{AF7F70C7-FDC5-460A-AEE3-832EF4A023EC}.Release|x86.Build.0 = Release|x86
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

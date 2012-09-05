@@ -6,8 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Ometz.RFQ.BLL.Model;
-using Ometz.RFQ.BLL;
+using Ometz.RFQ.Authentication;
 using Ometz.Representative.UI;
 using Ometz.Supplier.UI;
 
@@ -16,6 +15,8 @@ namespace Ometz.RFQ.LogInApp
 {
     public partial class Form1 : Form
     {
+        int identificationCount = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -23,67 +24,66 @@ namespace Ometz.RFQ.LogInApp
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            
-            string userName=textBoxUserName.Text;
-            string password = textBoxPassword.Text;
-            UserValidation(userName,password);
+            try 
+            {
+                identificationCount++;
+                if (identificationCount > 3)
+                    throw new LoginFailed();
 
+                string userName = textBoxUserName.Text;
+                string password = textBoxPassword.Text;
+                UserValidation(userName, password);
+ 
+            }
+            catch(LoginFailed lf)
+            {
+                MessageBox.Show("Login Failed", "app", MessageBoxButtons.OK);
+                this.Close();
+
+            }
+          
 
         }
 
-        private void UserValidation(string userName,string password)
+      
+
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+
+
+        private void UserValidation(string userName, string password)
         {
             try
             {
-                if (userName.Length<1)
+                if (userName.Length < 1)
                     throw new InvalidUserName();
 
-                IBLLServices BllFunction = new BLLServices();
-                UserDTO user = new UserDTO(userName);
-                if (user == null)
-                    throw new InvalidUserName();
-               
-                if (password.Length<1)
+                if (password.Length < 1)
                     throw new InvalidPassword();
-  
 
-                bool check = user.PasswordValidation(password, user.Password);
+                IUserService UserFunctions = new UserService();
 
-                if (check)
-                {
-                    MessageBox.Show("login in is valid", "app", MessageBoxButtons.OK);
-                    CompanyDTO CompanyLogIn = new CompanyDTO();
-                    ICompany CompanyFunction = new CompanyService();
-                    CompanyLogIn = CompanyFunction.GetCompanyByID(user.CompanyID);
+                bool userNameExisits = UserFunctions.CheckUserNameExists(userName);
 
-                    if (CompanyLogIn.CompanyTypeID == 1)
-                    {
-                        Ometz.Representative.UI.MainMenu newForm = new Ometz.Representative.UI.MainMenu(CompanyLogIn);
-                        newForm.Show();
-                        newForm.Activate();
-                        this.Hide();
+                if (!userNameExisits)
+                    throw new InvalidUserName();
 
-                    }
+                UserDTO UserLoggedIn = UserFunctions.GetUser(userName);
 
-                    if (CompanyLogIn.CompanyID == 2)
-                    {
-                        Ometz.Supplier.UI.Form1 newForm = new Ometz.Supplier.UI.Form1(CompanyLogIn);
-                        newForm.Show();
-                        newForm.Activate();
-                        this.Hide();
+                bool passwordMatch = UserFunctions.PasswordValidation(password, UserLoggedIn.Password);
 
-                    }
-
-
-
-                }
+                if (!passwordMatch)
+                { throw new InvalidLogIn(); }
                 else
                 {
-                    throw new InvalidLogIn();
+                    identificationCount = 0;
+                    ActivateApplication(UserLoggedIn);
                 }
-
-
-
 
             }
             catch (InvalidUserName eun)
@@ -96,10 +96,44 @@ namespace Ometz.RFQ.LogInApp
             { MessageBox.Show("User Name in is invalid", "app", MessageBoxButtons.OK); }
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+
+
+       private void ActivateApplication(UserDTO UserLoggedIn)
         {
-            this.Close();
+            int companyTypeID = UserLoggedIn.CompanyTypeID;
+
+            if (companyTypeID == 1)
+            {
+                Ometz.Representative.UI.MainMenu newForm = new Ometz.Representative.UI.MainMenu(UserLoggedIn.CompanyID);
+                newForm.ShowDialog();
+                newForm.Activate();
+                this.Hide();
+
+                if (newForm.DialogResult == DialogResult.Cancel)
+                {
+                    this.Close();
+
+                }
+
+            }
+
+            if (companyTypeID == 2)
+            {
+                Ometz.Supplier.UI.Form1 newForm = new Ometz.Supplier.UI.Form1(UserLoggedIn.CompanyID);
+                newForm.ShowDialog();
+                newForm.Activate();
+                this.Hide();
+
+                if (newForm.DialogResult == DialogResult.Cancel)
+                {
+                    this.Close();
+
+                }
+
+            }
+
         }
+
     }
 
     internal class InvalidUserName : Exception
@@ -107,6 +141,8 @@ namespace Ometz.RFQ.LogInApp
     internal class InvalidPassword : Exception
     { }
     internal class InvalidLogIn : Exception
+    { }
+    internal class LoginFailed : Exception
     { }
 
 }

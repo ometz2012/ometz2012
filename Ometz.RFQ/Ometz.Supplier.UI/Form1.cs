@@ -12,7 +12,7 @@ namespace Ometz.Supplier.UI
 {
     public partial class Form1 : Form
     {
-        public Form1(CompanyDTO CompanyLogIn)
+        public Form1(int companyID)
         {
             InitializeComponent();
         }

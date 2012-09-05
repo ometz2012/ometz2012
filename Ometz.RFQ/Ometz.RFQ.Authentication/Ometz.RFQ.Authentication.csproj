@@ -5,13 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{518476AD-13AD-4335-A771-4F2E52CC3846}</ProjectGuid>
+    <ProjectGuid>{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ometz.RFQ.BLL</RootNamespace>
-    <AssemblyName>Ometz.RFQ.BLL</AssemblyName>
+    <RootNamespace>Ometz.RFQ.Authentication</RootNamespace>
+    <AssemblyName>Ometz.RFQ.Authentication</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -39,27 +41,17 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressService.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="CompanyService.cs" />
-    <Compile Include="IAddress.cs" />
-    <Compile Include="ICompany.cs" />
-    <Compile Include="IQuote.cs" />
-    <Compile Include="Ometz.RFQ.Bids.BLL.cs" />
-    <Compile Include="Ometz.RFQ.Quotes.BLL.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="UserBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuoteService.cs" />
+    <Compile Include="UserDTO.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ometz.RFQ.BLL.Model\Ometz.RFQ.BLL.Model.csproj">
-      <Project>{6C4710F6-0639-446D-86B0-743FA6C28DC4}</Project>
-      <Name>Ometz.RFQ.BLL.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ometz.RFQ.DAL\Ometz.RFQ.DAL.csproj">
       <Project>{6B67BF85-4FD8-407C-A84D-D4E0B9417E4B}</Project>
       <Name>Ometz.RFQ.DAL</Name>

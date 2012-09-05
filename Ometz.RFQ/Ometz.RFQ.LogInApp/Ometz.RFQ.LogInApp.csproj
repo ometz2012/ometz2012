@@ -82,13 +82,9 @@
       <Project>{7E2BDBB6-3A13-44D7-B45F-91AE222405C9}</Project>
       <Name>Ometz.Representative.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ometz.RFQ.BLL.Model\Ometz.RFQ.BLL.Model.csproj">
-      <Project>{6C4710F6-0639-446D-86B0-743FA6C28DC4}</Project>
-      <Name>Ometz.RFQ.BLL.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ometz.RFQ.BLL\Ometz.RFQ.BLL.csproj">
-      <Project>{518476AD-13AD-4335-A771-4F2E52CC3846}</Project>
-      <Name>Ometz.RFQ.BLL</Name>
+    <ProjectReference Include="..\Ometz.RFQ.Authentication\Ometz.RFQ.Authentication.csproj">
+      <Project>{77ED0E1D-DDC3-4870-A3E9-7B3FF60E635B}</Project>
+      <Name>Ometz.RFQ.Authentication</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ometz.Supplier.UI\Ometz.Supplier.UI.csproj">
       <Project>{C6AC0955-3640-48B6-B41D-ED64F7E1E024}</Project>

@@ -32,8 +32,7 @@ namespace Ometz.RFQ.BLL
             CompanyToReturn.Name = CompanySpecific.Name;
             CompanyToReturn.CategoryID = CompanySpecific.Category.CategoryID;
             CompanyToReturn.CompanyTypeID = CompanySpecific.CompanyType.CompanyTypeID;
-
-
+          
 
             return CompanyToReturn;
         }

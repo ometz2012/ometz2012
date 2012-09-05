@@ -13,7 +13,7 @@ namespace Ometz.Representative.UI
 {
     public partial class MainMenu : Form
     {
-        public MainMenu(CompanyDTO CompanyLogIn)
+        public MainMenu(int companyID)
         {
             InitializeComponent();
         }
