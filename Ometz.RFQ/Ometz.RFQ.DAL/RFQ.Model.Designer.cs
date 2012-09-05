@@ -831,13 +831,17 @@ namespace Ometz.RFQ.DAL
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="companyTypeID">Initial value of the CompanyTypeID property.</param>
         /// <param name="categoryID">Initial value of the CategoryID property.</param>
-        public static Company CreateCompany(global::System.Int32 companyID, global::System.String name, global::System.Int32 companyTypeID, global::System.Int32 categoryID)
+        /// <param name="phone">Initial value of the Phone property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        public static Company CreateCompany(global::System.Int32 companyID, global::System.String name, global::System.Int32 companyTypeID, global::System.Int32 categoryID, global::System.String phone, global::System.String email)
         {
             Company company = new Company();
             company.CompanyID = companyID;
             company.Name = name;
             company.CompanyTypeID = companyTypeID;
             company.CategoryID = categoryID;
+            company.Phone = phone;
+            company.Email = email;
             return company;
         }
 
@@ -942,6 +946,78 @@ namespace Ometz.RFQ.DAL
         private global::System.Int32 _CategoryID;
         partial void OnCategoryIDChanging(global::System.Int32 value);
         partial void OnCategoryIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Fax
+        {
+            get
+            {
+                return _Fax;
+            }
+            set
+            {
+                OnFaxChanging(value);
+                ReportPropertyChanging("Fax");
+                _Fax = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Fax");
+                OnFaxChanged();
+            }
+        }
+        private global::System.String _Fax;
+        partial void OnFaxChanging(global::System.String value);
+        partial void OnFaxChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
 
         #endregion
     
