@@ -10,15 +10,15 @@ using System.Data;
 namespace Ometz.RFQ.BLL
 {
 
-    public class DTOQuoteToShow : DTOQuote
+    public class QuoteDTO : QuoteBase
     {
         public string Text { get; set; }
         public decimal Value { get; set; }
         
-        public List<DTOQuoteToShow> DTO_BidToShow()
+        public List<QuoteDTO> DTO_BidToShow()
         {
             List<Quote> allQuotes = new List<Quote>();
-            List<DTOQuoteToShow> listQuotesOut = new List<DTOQuoteToShow>();
+            List<QuoteDTO> listQuotesOut = new List<QuoteDTO>();
             using (var context = new RFQEntities())
             {
 
@@ -30,7 +30,7 @@ namespace Ometz.RFQ.BLL
             {
                 foreach (var quote in allQuotes)
                 {
-                    DTOQuoteToShow quoteRow = new DTOQuoteToShow();
+                    QuoteDTO quoteRow = new QuoteDTO();
                     quoteRow.QuoteID = quote.QuoteID;
                     quoteRow.CompanyID = quote.CompanyID;
                     quoteRow.StartDate = quote.StartDate;
@@ -51,10 +51,10 @@ namespace Ometz.RFQ.BLL
 
         }
         // Show the quotes of a particular participant
-        public List<DTOQuoteToShow> DTO_BidToShow(int companyID)
+        public List<QuoteDTO> DTO_BidToShow(int companyID)
         {
             //List<Quote> allQuotes = new List<Quote>();
-            List<DTOQuoteToShow> listQuotesOut = new List<DTOQuoteToShow>();
+            List<QuoteDTO> listQuotesOut = new List<QuoteDTO>();
             using (var context = new RFQEntities())
             {
 
@@ -77,7 +77,7 @@ namespace Ometz.RFQ.BLL
                 //{
                 foreach (var quote in allQuotes)
                 {
-                    DTOQuoteToShow quoteRow = new DTOQuoteToShow();
+                    QuoteDTO quoteRow = new QuoteDTO();
                     quoteRow.QuoteID = quote.QuoteID;
                     // quoteRow.CompanyID = quote.CompanyID;
                     quoteRow.StartDate = quote.StartDate;
@@ -102,7 +102,7 @@ namespace Ometz.RFQ.BLL
         }
     }
 
-    public class DTOQuoteToTerminate : DTOQuote
+    public class QuoteToTerminateDTO : QuoteBase
     {
         public int quoteid { get; set; }
     }

@@ -39,7 +39,7 @@ namespace Ometz.RFQ.LogInApp
                     throw new InvalidUserName();
 
                 IBLLServices BllFunction = new BLLServices();
-                DTOUserToShow user = new DTOUserToShow(userName);
+                UserDTO user = new UserDTO(userName);
                 if (user == null)
                     throw new InvalidUserName();
                
@@ -52,8 +52,9 @@ namespace Ometz.RFQ.LogInApp
                 if (check)
                 {
                     MessageBox.Show("login in is valid", "app", MessageBoxButtons.OK);
-                    DTOCompanyToShow CompanyLogIn = new DTOCompanyToShow();
-                    CompanyLogIn = BllFunction.GetCompanyByID(user.CompanyID);
+                    CompanyDTO CompanyLogIn = new CompanyDTO();
+                    ICompany CompanyFunction = new CompanyService();
+                    CompanyLogIn = CompanyFunction.GetCompanyByID(user.CompanyID);
 
                     if (CompanyLogIn.CompanyTypeID == 1)
                     {

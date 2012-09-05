@@ -40,15 +40,15 @@ namespace Ometz.RFQ.BLL
     //    }
     //  }
 
-    public class DTOShowQuoteBid : DTOQuoteBid
+    public class QuoteBidDTO : QuoteBidBase
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public List<DTOShowQuoteBid> ShowParticipantBids(int quoteParticipantID)
+        public List<QuoteBidDTO> ShowParticipantBids(int quoteParticipantID)
         {
             
             List<QuoteBid> bids = new List<QuoteBid>();
-            List<DTOShowQuoteBid> bidsToReturn = new List<DTOShowQuoteBid>();
+            List<QuoteBidDTO> bidsToReturn = new List<QuoteBidDTO>();
             using (var context = new RFQEntities())
             {
                 bids = (from bid in context.QuoteBids.Include("Quote").Include("Quote.Company").Include("Quote.Company.CompanyType")
@@ -58,7 +58,7 @@ namespace Ometz.RFQ.BLL
                 {
                     foreach (var item in bids)
                     {
-                        DTOShowQuoteBid bidRow = new DTOShowQuoteBid();
+                        QuoteBidDTO bidRow = new QuoteBidDTO();
                         bidRow.QuoteBidID = item.QuoteBidID;
                         bidRow.QuoteID = item.QuoteID;
                         bidRow.QuoteParticipantID = item.QuoteParticipantID;

@@ -16,7 +16,7 @@ namespace Ometz.RFQ.BLL
 
     }
 
-    public class DTOCompanyToShow : DTOCompany
+    public class CompanyDTO : CompanyBase
     {
         //public override string GetCompanyCategory()
         //{
@@ -38,18 +38,18 @@ namespace Ometz.RFQ.BLL
 
     }
 
-    public class DTOCompanyNameToShow : DTOCompany
+    public class CompanyNameDTO : CompanyBase
     {
         
 
     }
 
     // DTO USER TO SHOW BASED ON ABSTRACT CLASS DTO USER
-    public class DTOUserToShow : DTOUser
+    public class UserDTO : UserBase
     {
         private string userN;
 
-        public DTOUserToShow(string userName)
+        public UserDTO(string userName)
         {
             this.userN = userName;
             User user = new User();
@@ -87,7 +87,7 @@ namespace Ometz.RFQ.BLL
 
 
     //  DTO ADDRESS TO SHOW
-    public class DTOAddressToShow : DTOAddress
+    public class AddressDTO : AddressBase
     {
 
     }
@@ -99,12 +99,12 @@ namespace Ometz.RFQ.BLL
     }*/
 
     //------Quote--Detail ---   
-    public class DTOQuoteDetailToCreate : DTOQuoteDetail
+    public class QuoteDetailToCreateDTO : QuoteDetailBase
     {
 
     }
 
-    public class DTOQuoteDetailToShow : DTOQuoteDetail
+    public class QuoteDetailDTO : QuoteDetailBase
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -114,7 +114,7 @@ namespace Ometz.RFQ.BLL
 
     //DTO Participant
 
-    public class DTOParticipantToShow : DTOQuoteParticipant
+    public class ParticipantDTO : QuoteParticipantBase
     {
 
     }
@@ -145,7 +145,7 @@ namespace Ometz.RFQ.BLL
 
 
 
-    public class DTOShowQuoteInfo : DTOQuote
+    public class QuoteInfoDTO : QuoteBase
     {
         // public override DTOQuote;
 

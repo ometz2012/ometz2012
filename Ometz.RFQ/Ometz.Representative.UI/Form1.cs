@@ -13,7 +13,7 @@ namespace Ometz.Representative.UI
 {
     public partial class Form1 : Form
     {
-        public Form1(DTOCompanyToShow CompanyLogIn)
+        public Form1(CompanyDTO CompanyLogIn)
         {
             InitializeComponent();
         }

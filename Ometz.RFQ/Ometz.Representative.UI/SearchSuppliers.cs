@@ -35,9 +35,9 @@ namespace Ometz.Representative.UI
 
         private void SupplierLoadData()
         {
-            IBLLServices BllFunction = new BLLServices();
+            ICompany CompnyFunction = new CompanyService();
 
-            List<DTOCompanyToShow> ListOfCompanies = BllFunction.GetCompanies();
+            List<CompanyDTO> ListOfCompanies = CompnyFunction.GetCompanies();
 
             gridSuppliers.DataSource = ListOfCompanies;
             
