@@ -28,9 +28,9 @@ namespace Ometz.RFQ.BLL
                     AddressIn.State = AddressNew.State;
                     AddressIn.PostalCode = AddressNew.PostalCode;
                     AddressIn.Country = AddressNew.Country;
-                    AddressIn.Phone = AddressNew.Phone;
-                    AddressIn.Fax = AddressNew.Fax;
-                    AddressIn.Email = AddressNew.Email;
+                    //AddressIn.Phone = AddressNew.Phone;
+                    //AddressIn.Fax = AddressNew.Fax;
+                    //AddressIn.Email = AddressNew.Email;
 
                     using (var context = new RFQEntities())
                     {
@@ -97,9 +97,9 @@ namespace Ometz.RFQ.BLL
                     AddressRow.State = adr.State;
                     AddressRow.PostalCode = adr.PostalCode;
                     AddressRow.Country = adr.Country;
-                    AddressRow.Phone = adr.Phone;
-                    AddressRow.Fax = adr.Fax;
-                    AddressRow.Email = adr.Email;
+                    //AddressRow.Phone = adr.Phone;
+                    //AddressRow.Fax = adr.Fax;
+                    //AddressRow.Email = adr.Email;
 
                     AddressesListOut.Add(AddressRow);
 

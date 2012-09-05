@@ -11,6 +11,9 @@ namespace Ometz.RFQ.BLL.Model
         public string Name { get; set; }
         public int CompanyTypeID { get; set; }
         public int CategoryID { get; set; }
+        public string Phone {get;set;}
+        public string Fax { get; set; }
+        public string Email { get; set; }
 
         //public abstract string GetCompanyType();
         //public abstract string GetCompanyCategory();
