@@ -31,13 +31,7 @@ namespace Ometz.RFQ.BLL
             return check;
         }
 
-
-      
-
-    
-
-
     }
 
-    }//end of BLL Services Class
+  }
 

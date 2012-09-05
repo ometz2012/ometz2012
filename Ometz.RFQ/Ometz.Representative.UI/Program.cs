@@ -15,7 +15,7 @@ namespace Ometz.Representative.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SearchSuppliers());
+            Application.Run(new MainMenu());
         }
     }
 }

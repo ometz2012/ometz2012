@@ -11,11 +11,18 @@ using Ometz.RFQ.BLL.Model;
 
 namespace Ometz.Representative.UI
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
-        public Form1(CompanyDTO CompanyLogIn)
+        public MainMenu(CompanyDTO CompanyLogIn)
         {
             InitializeComponent();
         }
-    }
+
+        private void CreateRFQBtn_Click(object sender, EventArgs e)
+        {
+            CreateRFQ createRFQ = new CreateRFQ();
+            createRFQ.ShowDialog(this);
+        }
+
+   }
 }

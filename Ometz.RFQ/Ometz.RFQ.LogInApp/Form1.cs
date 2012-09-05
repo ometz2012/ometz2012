@@ -58,7 +58,7 @@ namespace Ometz.RFQ.LogInApp
 
                     if (CompanyLogIn.CompanyTypeID == 1)
                     {
-                        Ometz.Representative.UI.Form1 newForm = new Ometz.Representative.UI.Form1(CompanyLogIn);
+                        Ometz.Representative.UI.MainMenu newForm = new Ometz.Representative.UI.MainMenu(CompanyLogIn);
                         newForm.Show();
                         newForm.Activate();
                         this.Hide();

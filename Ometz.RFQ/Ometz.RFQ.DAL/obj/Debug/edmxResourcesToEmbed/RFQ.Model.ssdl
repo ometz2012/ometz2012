@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RFQModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="RFQModelStoreContainer">
+    <EntitySet Name="Address" EntityType="RFQModel.Store.Address" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="RFQModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Company" EntityType="RFQModel.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyType" EntityType="RFQModel.Store.CompanyType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Quote" EntityType="RFQModel.Store.Quote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuoteBid" EntityType="RFQModel.Store.QuoteBid" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuoteDetail" EntityType="RFQModel.Store.QuoteDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuoteParticipant" EntityType="RFQModel.Store.QuoteParticipant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuoteWinner" EntityType="RFQModel.Store.QuoteWinner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="RFQModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="RFQModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Address_Company" Association="RFQModel.Store.FK_Address_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Category" Association="RFQModel.Store.FK_Company_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_CompanyType" Association="RFQModel.Store.FK_Company_CompanyType">
+      <End Role="CompanyType" EntitySet="CompanyType" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quote_Company" Association="RFQModel.Store.FK_Quote_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Quote" EntitySet="Quote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteBid_Quote" Association="RFQModel.Store.FK_QuoteBid_Quote">
+      <End Role="Quote" EntitySet="Quote" />
+      <End Role="QuoteBid" EntitySet="QuoteBid" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteBid_QuoteParticipant" Association="RFQModel.Store.FK_QuoteBid_QuoteParticipant">
+      <End Role="QuoteParticipant" EntitySet="QuoteParticipant" />
+      <End Role="QuoteBid" EntitySet="QuoteBid" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteDetail_Quote" Association="RFQModel.Store.FK_QuoteDetail_Quote">
+      <End Role="Quote" EntitySet="Quote" />
+      <End Role="QuoteDetail" EntitySet="QuoteDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteParticipant_Company" Association="RFQModel.Store.FK_QuoteParticipant_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="QuoteParticipant" EntitySet="QuoteParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteParticipant_Quote" Association="RFQModel.Store.FK_QuoteParticipant_Quote">
+      <End Role="Quote" EntitySet="Quote" />
+      <End Role="QuoteParticipant" EntitySet="QuoteParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteWinner_Company" Association="RFQModel.Store.FK_QuoteWinner_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="QuoteWinner" EntitySet="QuoteWinner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuoteWinner_Quote" Association="RFQModel.Store.FK_QuoteWinner_Quote">
+      <End Role="Quote" EntitySet="Quote" />
+      <End Role="QuoteWinner" EntitySet="QuoteWinner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Company" Association="RFQModel.Store.FK_User_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PostalCode" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CompanyTypeID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyType">
+    <Key>
+      <PropertyRef Name="CompanyTypeID" />
+    </Key>
+    <Property Name="CompanyTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Quote">
+    <Key>
+      <PropertyRef Name="QuoteID" />
+    </Key>
+    <Property Name="QuoteID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuoteBid">
+    <Key>
+      <PropertyRef Name="QuoteBidID" />
+    </Key>
+    <Property Name="QuoteBidID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="QuoteID" Type="int" Nullable="false" />
+    <Property Name="QuoteParticipantID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="4" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="QuoteDetail">
+    <Key>
+      <PropertyRef Name="QuoteDetailID" />
+    </Key>
+    <Property Name="QuoteDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="QuoteID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Value" Type="decimal" Nullable="false" Scale="4" />
+  </EntityType>
+  <EntityType Name="QuoteParticipant">
+    <Key>
+      <PropertyRef Name="QuoteParticipantID" />
+    </Key>
+    <Property Name="QuoteParticipantID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="QuoteID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuoteWinner">
+    <Key>
+      <PropertyRef Name="QuoteWinnerID" />
+    </Key>
+    <Property Name="QuoteWinnerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="QuoteID" Type="int" Nullable="false" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Address_Company">
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="1" />
+    <End Role="Address" Type="RFQModel.Store.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Category">
+    <End Role="Category" Type="RFQModel.Store.Category" Multiplicity="1" />
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_CompanyType">
+    <End Role="CompanyType" Type="RFQModel.Store.CompanyType" Multiplicity="1" />
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyType">
+        <PropertyRef Name="CompanyTypeID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CompanyTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quote_Company">
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="1" />
+    <End Role="Quote" Type="RFQModel.Store.Quote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="Quote">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteBid_Quote">
+    <End Role="Quote" Type="RFQModel.Store.Quote" Multiplicity="1" />
+    <End Role="QuoteBid" Type="RFQModel.Store.QuoteBid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quote">
+        <PropertyRef Name="QuoteID" />
+      </Principal>
+      <Dependent Role="QuoteBid">
+        <PropertyRef Name="QuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteBid_QuoteParticipant">
+    <End Role="QuoteParticipant" Type="RFQModel.Store.QuoteParticipant" Multiplicity="1" />
+    <End Role="QuoteBid" Type="RFQModel.Store.QuoteBid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuoteParticipant">
+        <PropertyRef Name="QuoteParticipantID" />
+      </Principal>
+      <Dependent Role="QuoteBid">
+        <PropertyRef Name="QuoteParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteDetail_Quote">
+    <End Role="Quote" Type="RFQModel.Store.Quote" Multiplicity="1" />
+    <End Role="QuoteDetail" Type="RFQModel.Store.QuoteDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quote">
+        <PropertyRef Name="QuoteID" />
+      </Principal>
+      <Dependent Role="QuoteDetail">
+        <PropertyRef Name="QuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteParticipant_Company">
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="1" />
+    <End Role="QuoteParticipant" Type="RFQModel.Store.QuoteParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="QuoteParticipant">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteParticipant_Quote">
+    <End Role="Quote" Type="RFQModel.Store.Quote" Multiplicity="1" />
+    <End Role="QuoteParticipant" Type="RFQModel.Store.QuoteParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quote">
+        <PropertyRef Name="QuoteID" />
+      </Principal>
+      <Dependent Role="QuoteParticipant">
+        <PropertyRef Name="QuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteWinner_Company">
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="1" />
+    <End Role="QuoteWinner" Type="RFQModel.Store.QuoteWinner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="QuoteWinner">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuoteWinner_Quote">
+    <End Role="Quote" Type="RFQModel.Store.Quote" Multiplicity="1" />
+    <End Role="QuoteWinner" Type="RFQModel.Store.QuoteWinner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quote">
+        <PropertyRef Name="QuoteID" />
+      </Principal>
+      <Dependent Role="QuoteWinner">
+        <PropertyRef Name="QuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Company">
+    <End Role="Company" Type="RFQModel.Store.Company" Multiplicity="1" />
+    <End Role="User" Type="RFQModel.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
