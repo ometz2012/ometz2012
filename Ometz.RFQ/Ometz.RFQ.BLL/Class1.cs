@@ -51,6 +51,12 @@ namespace Ometz.RFQ.BLL
 
     }
 
+    public class QuoteAdded
+    {
+        public bool Added { get; set; }
+       public int LastId { get; set; }
+    }
+
     //DTO Participant
 
     public class ParticipantDTO : QuoteParticipantBase

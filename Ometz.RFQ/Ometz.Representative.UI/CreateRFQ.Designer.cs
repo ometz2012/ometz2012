@@ -32,12 +32,15 @@
             this.QuantityLbl = new System.Windows.Forms.Label();
             this.StartDateLbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.EndDateTxt = new System.Windows.Forms.TextBox();
-            this.DescriptionValueTxt = new System.Windows.Forms.TextBox();
-            this.QuantityAmountTxt = new System.Windows.Forms.TextBox();
-            this.StartDateTxt = new System.Windows.Forms.TextBox();
+            this.textBoxEndDate = new System.Windows.Forms.TextBox();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.textBoxStartDate = new System.Windows.Forms.TextBox();
             this.tableCreateRFQ = new System.Windows.Forms.TableLayoutPanel();
             this.DescriptionLbl = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.tableCreateRFQ.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@
             // 
             this.QuantityLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.QuantityLbl.AutoSize = true;
-            this.QuantityLbl.Location = new System.Drawing.Point(230, 13);
+            this.QuantityLbl.Location = new System.Drawing.Point(228, 13);
             this.QuantityLbl.Name = "QuantityLbl";
             this.QuantityLbl.Size = new System.Drawing.Size(46, 13);
             this.QuantityLbl.TabIndex = 1;
@@ -63,7 +66,7 @@
             // 
             this.StartDateLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StartDateLbl.AutoSize = true;
-            this.StartDateLbl.Location = new System.Drawing.Point(319, 13);
+            this.StartDateLbl.Location = new System.Drawing.Point(317, 13);
             this.StartDateLbl.Name = "StartDateLbl";
             this.StartDateLbl.Size = new System.Drawing.Size(55, 13);
             this.StartDateLbl.TabIndex = 2;
@@ -73,41 +76,41 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(418, 13);
+            this.label4.Location = new System.Drawing.Point(417, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "End Date";
             // 
-            // EndDateTxt
+            // textBoxEndDate
             // 
-            this.EndDateTxt.Location = new System.Drawing.Point(397, 42);
-            this.EndDateTxt.Name = "EndDateTxt";
-            this.EndDateTxt.Size = new System.Drawing.Size(92, 20);
-            this.EndDateTxt.TabIndex = 4;
+            this.textBoxEndDate.Location = new System.Drawing.Point(395, 42);
+            this.textBoxEndDate.Name = "textBoxEndDate";
+            this.textBoxEndDate.Size = new System.Drawing.Size(92, 20);
+            this.textBoxEndDate.TabIndex = 4;
             // 
-            // DescriptionValueTxt
+            // textBoxDescription
             // 
-            this.DescriptionValueTxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DescriptionValueTxt.Location = new System.Drawing.Point(5, 42);
-            this.DescriptionValueTxt.Name = "DescriptionValueTxt";
-            this.DescriptionValueTxt.Size = new System.Drawing.Size(197, 20);
-            this.DescriptionValueTxt.TabIndex = 5;
+            this.textBoxDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBoxDescription.Location = new System.Drawing.Point(4, 42);
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(197, 20);
+            this.textBoxDescription.TabIndex = 5;
             // 
-            // QuantityAmountTxt
+            // textBoxQuantity
             // 
-            this.QuantityAmountTxt.Location = new System.Drawing.Point(210, 42);
-            this.QuantityAmountTxt.Name = "QuantityAmountTxt";
-            this.QuantityAmountTxt.Size = new System.Drawing.Size(86, 20);
-            this.QuantityAmountTxt.TabIndex = 6;
+            this.textBoxQuantity.Location = new System.Drawing.Point(209, 42);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(85, 20);
+            this.textBoxQuantity.TabIndex = 6;
             // 
-            // StartDateTxt
+            // textBoxStartDate
             // 
-            this.StartDateTxt.BackColor = System.Drawing.SystemColors.Window;
-            this.StartDateTxt.Location = new System.Drawing.Point(303, 42);
-            this.StartDateTxt.Name = "StartDateTxt";
-            this.StartDateTxt.Size = new System.Drawing.Size(87, 20);
-            this.StartDateTxt.TabIndex = 7;
+            this.textBoxStartDate.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxStartDate.Location = new System.Drawing.Point(301, 42);
+            this.textBoxStartDate.Name = "textBoxStartDate";
+            this.textBoxStartDate.Size = new System.Drawing.Size(87, 20);
+            this.textBoxStartDate.TabIndex = 7;
             // 
             // tableCreateRFQ
             // 
@@ -116,15 +119,15 @@
             this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.10299F));
             this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.89701F));
             this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableCreateRFQ.Controls.Add(this.DescriptionValueTxt, 0, 1);
+            this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableCreateRFQ.Controls.Add(this.textBoxDescription, 0, 1);
             this.tableCreateRFQ.Controls.Add(this.label4, 3, 0);
             this.tableCreateRFQ.Controls.Add(this.StartDateLbl, 2, 0);
-            this.tableCreateRFQ.Controls.Add(this.StartDateTxt, 2, 1);
-            this.tableCreateRFQ.Controls.Add(this.QuantityAmountTxt, 1, 1);
+            this.tableCreateRFQ.Controls.Add(this.textBoxStartDate, 2, 1);
+            this.tableCreateRFQ.Controls.Add(this.textBoxQuantity, 1, 1);
             this.tableCreateRFQ.Controls.Add(this.QuantityLbl, 1, 0);
             this.tableCreateRFQ.Controls.Add(this.DescriptionLbl, 0, 0);
-            this.tableCreateRFQ.Controls.Add(this.EndDateTxt, 3, 1);
+            this.tableCreateRFQ.Controls.Add(this.textBoxEndDate, 3, 1);
             this.tableCreateRFQ.Location = new System.Drawing.Point(12, 24);
             this.tableCreateRFQ.Name = "tableCreateRFQ";
             this.tableCreateRFQ.RowCount = 2;
@@ -143,11 +146,44 @@
             this.DescriptionLbl.TabIndex = 8;
             this.DescriptionLbl.Text = "Description";
             // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(434, 117);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 9;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(353, 117);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonReset.TabIndex = 10;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonCreate
+            // 
+            this.buttonCreate.Location = new System.Drawing.Point(272, 117);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 11;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
             // CreateRFQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 115);
+            this.ClientSize = new System.Drawing.Size(521, 152);
+            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonReset);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.tableCreateRFQ);
             this.Controls.Add(this.label1);
             this.Name = "CreateRFQ";
@@ -165,11 +201,14 @@
         private System.Windows.Forms.Label QuantityLbl;
         private System.Windows.Forms.Label StartDateLbl;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox EndDateTxt;
-        private System.Windows.Forms.TextBox DescriptionValueTxt;
-        private System.Windows.Forms.TextBox QuantityAmountTxt;
-        private System.Windows.Forms.TextBox StartDateTxt;
+        private System.Windows.Forms.TextBox textBoxEndDate;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.TextBox textBoxQuantity;
+        private System.Windows.Forms.TextBox textBoxStartDate;
         private System.Windows.Forms.TableLayoutPanel tableCreateRFQ;
         private System.Windows.Forms.Label DescriptionLbl;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonCreate;
     }
 }

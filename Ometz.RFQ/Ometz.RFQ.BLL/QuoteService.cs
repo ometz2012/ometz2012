@@ -12,9 +12,10 @@ namespace Ometz.RFQ.BLL
     public class QuoteService:IQuote
     {
         //Method that creates new Quotation 
-        public bool CreateNewQuoation(QuoteDTO QuoteNew)
+        public QuoteAdded CreateNewQuoation(QuoteDTO QuoteNew)
         {
             bool check = false;
+            QuoteAdded QuoteValidation = new QuoteAdded();
             using (TransactionScope transaction = new TransactionScope())
             {
 
@@ -24,6 +25,7 @@ namespace Ometz.RFQ.BLL
                     //Data transfer to the the AddressIn
                     QuoteIn.StartDate = QuoteNew.StartDate;
                     QuoteIn.EndDate = QuoteNew.EndDate;
+                    QuoteIn.Status = true;
 
                     using (var context = new RFQEntities())
                     {
@@ -34,12 +36,17 @@ namespace Ometz.RFQ.BLL
                         QuoteIn.Company = existingCompany;
 
 
+
                         if (QuoteIn.EntityState == EntityState.Detached)
                         {
                             context.Quotes.AddObject(QuoteIn);
                         }
 
                         context.SaveChanges();
+
+                        int id = QuoteIn.QuoteID;
+                        QuoteValidation.LastId = id;
+                       
 
                     }
 
@@ -49,13 +56,15 @@ namespace Ometz.RFQ.BLL
                 {
                     transaction.Dispose();
                     check = false;
-                    return check;
+                    QuoteValidation.Added = check;
+                    return QuoteValidation;
 
 
                 }
                 transaction.Complete();
                 check = true;
-                return check;
+                QuoteValidation.Added = check;
+                return QuoteValidation;
 
 
             }

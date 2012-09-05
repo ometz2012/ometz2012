@@ -13,14 +13,17 @@ namespace Ometz.Representative.UI
 {
     public partial class MainMenu : Form
     {
+
+        int companyID;
         public MainMenu(int companyID)
         {
             InitializeComponent();
+            this.companyID = companyID;
         }
 
         private void CreateRFQBtn_Click(object sender, EventArgs e)
         {
-            CreateRFQ createRFQ = new CreateRFQ();
+            CreateRFQ createRFQ = new CreateRFQ(this.companyID);
             createRFQ.ShowDialog(this);
         }
 

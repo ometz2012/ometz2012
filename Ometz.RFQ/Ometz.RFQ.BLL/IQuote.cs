@@ -8,7 +8,7 @@ namespace Ometz.RFQ.BLL
    public interface IQuote
     {
         //Method that creates new Quotation 
-        bool CreateNewQuoation(QuoteDTO QuoteNew);
+        QuoteAdded CreateNewQuoation(QuoteDTO QuoteNew);
 
         //Method that adds new details row to the QuoteDetail
         bool CreateNewQuoteDetail(QuoteDetailToCreateDTO QuoteDetailNew);
