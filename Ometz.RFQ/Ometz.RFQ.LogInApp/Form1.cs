@@ -20,6 +20,7 @@ namespace Ometz.RFQ.LogInApp
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void buttonLogIn_Click(object sender, EventArgs e)

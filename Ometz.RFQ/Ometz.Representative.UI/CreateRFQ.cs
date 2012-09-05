@@ -18,6 +18,9 @@ namespace Ometz.Representative.UI
         {
             InitializeComponent();
             companyIDIn = companyId;
+            this.textBoxStartDate.KeyPress += new KeyPressEventHandler(ApplicationServices.Number_KeyPress);
+            this.textBoxEndDate.KeyPress += new KeyPressEventHandler(ApplicationServices.Number_KeyPress);
+            this.textBoxQuantity.KeyPress += new KeyPressEventHandler(ApplicationServices.Number_KeyPress);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -35,28 +38,119 @@ namespace Ometz.Representative.UI
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            QuoteDTO QuoteIn = new QuoteDTO();
-            QuoteIn.CompanyID = companyIDIn;
-
-            
-            IQuote QuoteFunctions = new QuoteService();
-            QuoteAdded QuoteValidation = QuoteFunctions.CreateNewQuoation(QuoteIn);
-            if (QuoteValidation.Added == true)
+            try
             {
-                QuoteDetailToCreateDTO DetailToCreate = new QuoteDetailToCreateDTO();
-                DetailToCreate.QuoteID = QuoteValidation.LastId;
-                DetailToCreate.Text = textBoxDescription.Text;
-                string sValue = textBoxQuantity.Text;
-                decimal dValue;
-                bool isParsed = decimal.TryParse(sValue,out dValue);
-                DetailToCreate.Value = dValue;
+                ApplicationServices appService = new ApplicationServices();
+                bool emptyText = appService.EmptyTextValidation(this);
+                appService.EmptyTextMark(this);
 
-                bool check = QuoteFunctions.CreateNewQuoteDetail(DetailToCreate);
+                if (!emptyText)
+                    throw new EmptyText();
+
+                DateTime StartDate = new DateTime();
+                DateTime EndDate = new DateTime();
+                string sStartDate = textBoxStartDate.Text;
+                string sEndDate = textBoxEndDate.Text;
+                bool startDateValid = DateTime.TryParse(sStartDate, out StartDate);
+                bool endDateValid = DateTime.TryParse(sEndDate, out EndDate);
+
+                if (!startDateValid)
+                {
+                    textBoxStartDate.BackColor = Color.Red;
+                    throw new InvalidDateFormat();
+
+                }
+
+                if (!endDateValid)
+                {
+                    textBoxEndDate.BackColor = Color.Red;
+                    throw new InvalidDateFormat();
+                }
+
+                if (StartDate > EndDate)
+                {
+                    throw new DateChronolgy();
+                }
+
+
+                QuoteDTO QuoteIn = new QuoteDTO();
+                QuoteIn.CompanyID = companyIDIn;
+                QuoteIn.StartDate = StartDate;
+                QuoteIn.EndDate = EndDate;
+
+                IQuote QuoteFunctions = new QuoteService();
+                QuoteAdded QuoteValidation = QuoteFunctions.CreateNewQuoation(QuoteIn);
+                if (QuoteValidation.Added == true)
+                {
+                    QuoteDetailToCreateDTO DetailToCreate = new QuoteDetailToCreateDTO();
+                    DetailToCreate.QuoteID = QuoteValidation.LastId;
+                    DetailToCreate.Text = textBoxDescription.Text;
+                    string sValue = textBoxQuantity.Text;
+                    decimal dValue;
+                    bool isParsed = decimal.TryParse(sValue, out dValue);
+
+                    if (!isParsed)
+                    { throw new QuantityWrong(); }
+
+                    DetailToCreate.Value = dValue;
+
+                    bool check = QuoteFunctions.CreateNewQuoteDetail(DetailToCreate);
+
+                    if (check)
+                    {
+                        MessageBox.Show("Quote was created. ", "app", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    else
+                    {
+                        throw new QuoteFailed();
+                    }
+
+                }
+                else
+                {
+                    throw new QuoteFailed();
+                }
+
+            }
+            catch (EmptyText et)
+            {
+                MessageBox.Show("Empty Text, all fields must be filled out.", "app", MessageBoxButtons.OK);
+            }
+            catch (InvalidDateFormat idf)
+            {
+                MessageBox.Show("Date format is invalid. Date format is: 'yyyy/mm/dd' ", "app", MessageBoxButtons.OK);
+
+            }
+            catch (QuoteFailed qf)
+            {
+                MessageBox.Show("Quote creation failed. Please check your data. ", "app", MessageBoxButtons.OK);
+
+            }
+            catch (DateChronolgy dc)
+            {
+                MessageBox.Show("Dates are not choronological. ", "app", MessageBoxButtons.OK);
+ 
+            }
+            catch(QuantityWrong qw)
+            {
+                MessageBox.Show("Quanity should be decimal. ", "app", MessageBoxButtons.OK);
+ 
             }
 
         }
 
-        
-        
+
     }
+
+    internal class InvalidDateFormat : Exception
+    { }
+    internal class EmptyText : Exception
+    { }
+    internal class QuoteFailed : Exception
+    { }
+    internal class DateChronolgy : Exception
+    { }
+    internal class QuantityWrong : Exception
+    { }
 }
