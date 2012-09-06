@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="RFQModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="RFQModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="RFQModelStoreContainer">
           <EntitySet Name="Address" EntityType="RFQModel.Store.Address" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Category" EntityType="RFQModel.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -313,7 +313,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RFQModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -390,9 +391,6 @@
           <Property Name="State" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
           <Property Name="Country" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="Fax" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Company" Relationship="RFQModel.FK_Address_Company" FromRole="Address" ToRole="Company" />
         </EntityType>
         <EntityType Name="Category">
@@ -411,6 +409,9 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CompanyTypeID" Type="Int32" Nullable="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Addresses" Relationship="RFQModel.FK_Address_Company" FromRole="Company" ToRole="Address" />
           <NavigationProperty Name="Category" Relationship="RFQModel.FK_Company_Category" FromRole="Company" ToRole="Category" />
           <NavigationProperty Name="CompanyType" Relationship="RFQModel.FK_Company_CompanyType" FromRole="Company" ToRole="CompanyType" />
@@ -418,9 +419,6 @@
           <NavigationProperty Name="QuoteParticipants" Relationship="RFQModel.FK_QuoteParticipant_Company" FromRole="Company" ToRole="QuoteParticipant" />
           <NavigationProperty Name="QuoteWinners" Relationship="RFQModel.FK_QuoteWinner_Company" FromRole="Company" ToRole="QuoteWinner" />
           <NavigationProperty Name="Users" Relationship="RFQModel.FK_User_Company" FromRole="Company" ToRole="User" />
-          <Property Type="String" Name="Phone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fax" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CompanyType">
           <Key>
@@ -438,12 +436,12 @@
           <Property Name="CompanyID" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Company" Relationship="RFQModel.FK_Quote_Company" FromRole="Quote" ToRole="Company" />
           <NavigationProperty Name="QuoteBids" Relationship="RFQModel.FK_QuoteBid_Quote" FromRole="Quote" ToRole="QuoteBid" />
           <NavigationProperty Name="QuoteDetails" Relationship="RFQModel.FK_QuoteDetail_Quote" FromRole="Quote" ToRole="QuoteDetail" />
           <NavigationProperty Name="QuoteParticipants" Relationship="RFQModel.FK_QuoteParticipant_Quote" FromRole="Quote" ToRole="QuoteParticipant" />
           <NavigationProperty Name="QuoteWinners" Relationship="RFQModel.FK_QuoteWinner_Quote" FromRole="Quote" ToRole="QuoteWinner" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
         </EntityType>
         <EntityType Name="QuoteBid">
           <Key>
@@ -452,7 +450,7 @@
           <Property Name="QuoteBidID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="QuoteID" Type="Int32" Nullable="false" />
           <Property Name="QuoteParticipantID" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Notes" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Quote" Relationship="RFQModel.FK_QuoteBid_Quote" FromRole="QuoteBid" ToRole="Quote" />
           <NavigationProperty Name="QuoteParticipant" Relationship="RFQModel.FK_QuoteBid_QuoteParticipant" FromRole="QuoteBid" ToRole="QuoteParticipant" />
@@ -464,7 +462,7 @@
           <Property Name="QuoteDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="QuoteID" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Value" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Quote" Relationship="RFQModel.FK_QuoteDetail_Quote" FromRole="QuoteDetail" ToRole="Quote" />
         </EntityType>
         <EntityType Name="QuoteParticipant">
@@ -667,30 +665,30 @@
             <ScalarProperty Name="State" ColumnName="State" />
             <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
             <ScalarProperty Name="Country" ColumnName="Country" />
-            </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="RFQModel.Category"><MappingFragment StoreEntitySet="Category">
             <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
             <ScalarProperty Name="Type" ColumnName="Type" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Companies"><EntityTypeMapping TypeName="RFQModel.Company"><MappingFragment StoreEntitySet="Company">
-            <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+            <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="CompanyTypeID" ColumnName="CompanyTypeID" />
             <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+            <ScalarProperty Name="Fax" ColumnName="Fax" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="CompanyTypes"><EntityTypeMapping TypeName="RFQModel.CompanyType"><MappingFragment StoreEntitySet="CompanyType">
             <ScalarProperty Name="CompanyTypeID" ColumnName="CompanyTypeID" />
             <ScalarProperty Name="Type" ColumnName="Type" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Quotes"><EntityTypeMapping TypeName="RFQModel.Quote"><MappingFragment StoreEntitySet="Quote">
-            <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+            <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
             <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
             <ScalarProperty Name="StartDate" ColumnName="StartDate" />
             <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="QuoteBids"><EntityTypeMapping TypeName="RFQModel.QuoteBid"><MappingFragment StoreEntitySet="QuoteBid">
             <ScalarProperty Name="QuoteBidID" ColumnName="QuoteBidID" />
@@ -748,84 +746,84 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="RFQ.Model" ZoomLevel="114">
-        <EntityTypeShape EntityType="RFQModel.Address" Width="1.5" PointX="5.25" PointY="5.75" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.Category" Width="1.5" PointX="0.75" PointY="9.625" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.Company" Width="1.5" PointX="3" PointY="8.875" Height="3.1340950520833317" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.CompanyType" Width="1.5" PointX="0.75" PointY="6.625" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.Quote" Width="1.5" PointX="5.25" PointY="9.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.QuoteBid" Width="1.5" PointX="7.5" PointY="10" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.QuoteDetail" Width="1.5" PointX="7.5" PointY="13.25" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.QuoteParticipant" Width="1.5" PointX="7.5" PointY="6.625" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.QuoteWinner" Width="1.5" PointX="10.5" PointY="9.75" Height="1.9802864583333317" IsExpanded="true" />
+      <Diagram Name="RFQ.Model">
+        <EntityTypeShape EntityType="RFQModel.Address" Width="1.5" PointX="5.25" PointY="5.625" Height="2.7494921875000005" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.Category" Width="1.5" PointX="0.75" PointY="9.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.Company" Width="1.5" PointX="3" PointY="8.25" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.CompanyType" Width="1.5" PointX="0.75" PointY="6.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.Quote" Width="1.5" PointX="5.25" PointY="9.125" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.QuoteBid" Width="1.5" PointX="7.5" PointY="9.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.QuoteDetail" Width="1.5" PointX="7.5" PointY="12.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.QuoteParticipant" Width="1.5" PointX="7.5" PointY="6.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.QuoteWinner" Width="1.5" PointX="10.5" PointY="9.125" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="RFQModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFQModel.User" Width="1.5" PointX="5.25" PointY="13.25" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFQModel.User" Width="1.5" PointX="5.25" PointY="12.75" Height="1.9802864583333353" IsExpanded="true" />
         <AssociationConnector Association="RFQModel.FK_Address_Company" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.75" PointY="8.875" />
-          <ConnectorPoint PointX="3.75" PointY="7.3124995" />
-          <ConnectorPoint PointX="5.25" PointY="7.3124995" />
+          <ConnectorPoint PointX="3.75" PointY="8.25" />
+          <ConnectorPoint PointX="3.75" PointY="6.9374995" />
+          <ConnectorPoint PointX="5.25" PointY="6.9374995" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_Company_Category" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="10.422841796875" />
-          <ConnectorPoint PointX="3" PointY="10.422841796875" />
+          <ConnectorPoint PointX="2.25" PointY="10.172841796875" />
+          <ConnectorPoint PointX="3" PointY="10.172841796875" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_Company_CompanyType" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="7.766591546875" />
-          <ConnectorPoint PointX="3.3437475" PointY="7.766591546875" />
-          <ConnectorPoint PointX="3.3437475" PointY="8.875" />
+          <ConnectorPoint PointX="2.25" PointY="7.454091546875" />
+          <ConnectorPoint PointX="3.3437475" PointY="7.454091546875" />
+          <ConnectorPoint PointX="3.3437475" PointY="8.25" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_Quote_Company" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.879547526041666" />
-          <ConnectorPoint PointX="5.25" PointY="10.879547526041666" />
+          <ConnectorPoint PointX="4.5" PointY="10.542999674479166" />
+          <ConnectorPoint PointX="5.25" PointY="10.542999674479166" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteParticipant_Company" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="9.8460217630208327" />
-          <ConnectorPoint PointX="5" PointY="9.8460217630208327" />
-          <ConnectorPoint PointX="5" PointY="9.5" />
-          <ConnectorPoint PointX="6.9178195128205138" PointY="9.5" />
-          <ConnectorPoint PointX="7.08448617948718" PointY="9.5" />
-          <ConnectorPoint PointX="8.25" PointY="9.5" />
-          <ConnectorPoint PointX="8.25" PointY="8.797587890625" />
+          <ConnectorPoint PointX="4.5" PointY="8.2511528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="7.8761528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="8.672587890625" />
+          <ConnectorPoint PointX="7.1261528461538468" PointY="8.672587890625" />
+          <ConnectorPoint PointX="7.5011528461538459" PointY="8.297587890625" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteWinner_Company" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="9.3194482421875" />
-          <ConnectorPoint PointX="8.1666666666666661" PointY="9.3194482421875" />
-          <ConnectorPoint PointX="8.3333333333333339" PointY="9.3194482421875" />
-          <ConnectorPoint PointX="8.6041666666666661" PointY="9.3194482421875" />
-          <ConnectorPoint PointX="8.7708333333333339" PointY="9.3194482421875" />
-          <ConnectorPoint PointX="11.25" PointY="9.3194482421875" />
-          <ConnectorPoint PointX="11.25" PointY="9.75" />
+          <ConnectorPoint PointX="4.5" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="8.5547900390624978" />
+          <ConnectorPoint PointX="7.32728403104968" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="8.1984955897435885" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="8.3651622564102563" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="11.25" PointY="8.5547900390625" />
+          <ConnectorPoint PointX="11.25" PointY="9.125" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_User_Company" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.75" PointY="12.009095052083332" />
-          <ConnectorPoint PointX="3.75" PointY="14.240143229166668" />
-          <ConnectorPoint PointX="5.25" PointY="14.240143229166668" />
+          <ConnectorPoint PointX="3.75" PointY="11.960999348958332" />
+          <ConnectorPoint PointX="3.75" PointY="13.740143229166668" />
+          <ConnectorPoint PointX="5.25" PointY="13.740143229166668" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteBid_Quote" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="11.182444661458334" />
-          <ConnectorPoint PointX="7.5" PointY="11.182444661458334" />
+          <ConnectorPoint PointX="6.75" PointY="10.557444661458334" />
+          <ConnectorPoint PointX="7.5" PointY="10.557444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteDetail_Quote" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="12.4994921875" />
-          <ConnectorPoint PointX="7.125" PointY="12.8744921875" />
-          <ConnectorPoint PointX="7.125" PointY="14.240143229166666" />
-          <ConnectorPoint PointX="7.5" PointY="14.240143229166666" />
+          <ConnectorPoint PointX="6.75" PointY="12.066793619791667" />
+          <ConnectorPoint PointX="7.125" PointY="12.441793619791667" />
+          <ConnectorPoint PointX="7.125" PointY="12.248847153846153" />
+          <ConnectorPoint PointX="7.5011528461538459" PointY="12.625" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteParticipant_Quote" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="9.7511528461538468" />
-          <ConnectorPoint PointX="7.125" PointY="9.3761528461538468" />
-          <ConnectorPoint PointX="7.125" PointY="7.7112939453125" />
-          <ConnectorPoint PointX="7.5" PointY="7.7112939453125" />
+          <ConnectorPoint PointX="6.75" PointY="9.1261528461538468" />
+          <ConnectorPoint PointX="7.125" PointY="8.7511528461538468" />
+          <ConnectorPoint PointX="7.125" PointY="7.2112939453125" />
+          <ConnectorPoint PointX="7.5" PointY="7.2112939453125" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteWinner_Quote" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="9.8755789230769242" />
-          <ConnectorPoint PointX="8.6041666666666661" PointY="9.8755789230769242" />
-          <ConnectorPoint PointX="8.7708333333333339" PointY="9.8755789230769242" />
-          <ConnectorPoint PointX="10.5" PointY="9.8755789230769242" />
+          <ConnectorPoint PointX="6.75" PointY="9.2505789230769242" />
+          <ConnectorPoint PointX="8.1984955897435885" PointY="9.2505789230769242" />
+          <ConnectorPoint PointX="8.3651622564102563" PointY="9.2505789230769242" />
+          <ConnectorPoint PointX="10.5" PointY="9.2505789230769242" />
         </AssociationConnector>
         <AssociationConnector Association="RFQModel.FK_QuoteBid_QuoteParticipant" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.6875" PointY="8.797587890625" />
-          <ConnectorPoint PointX="8.6875" PointY="10" />
+          <ConnectorPoint PointX="8.2818289230769224" PointY="8.297587890625" />
+          <ConnectorPoint PointX="8.2818289230769224" PointY="9.375" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

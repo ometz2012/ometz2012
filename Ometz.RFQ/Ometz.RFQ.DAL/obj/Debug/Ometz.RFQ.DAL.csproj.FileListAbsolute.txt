@@ -10,3 +10,9 @@ C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\
 C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
 C:\Development\Projects\15 RFQ checkout\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb
+C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll.config
+C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll
+C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.pdb
+C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
+C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb

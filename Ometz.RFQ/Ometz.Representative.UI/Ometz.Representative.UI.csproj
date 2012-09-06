@@ -74,6 +74,9 @@
     <Compile Include="SearchSuppliers.Designer.cs">
       <DependentUpon>SearchSuppliers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CategoryTree.resx">
+      <DependentUpon>CategoryTree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateRFQ.resx">
       <DependentUpon>CreateRFQ.cs</DependentUpon>
     </EmbeddedResource>

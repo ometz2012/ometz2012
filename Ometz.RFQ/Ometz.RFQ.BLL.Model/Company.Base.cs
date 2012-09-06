@@ -15,7 +15,7 @@ namespace Ometz.RFQ.BLL.Model
         public string Fax { get; set; }
         public string Email { get; set; }
 
-   
+
     }
 
 

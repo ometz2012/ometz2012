@@ -376,9 +376,7 @@ namespace Ometz.RFQ.DAL
         /// <param name="state">Initial value of the State property.</param>
         /// <param name="postalCode">Initial value of the PostalCode property.</param>
         /// <param name="country">Initial value of the Country property.</param>
-        /// <param name="phone">Initial value of the Phone property.</param>
-        /// <param name="email">Initial value of the Email property.</param>
-        public static Address CreateAddress(global::System.Int32 addressID, global::System.Int32 companyID, global::System.String address1, global::System.String city, global::System.String state, global::System.String postalCode, global::System.String country, global::System.String phone, global::System.String email)
+        public static Address CreateAddress(global::System.Int32 addressID, global::System.Int32 companyID, global::System.String address1, global::System.String city, global::System.String state, global::System.String postalCode, global::System.String country)
         {
             Address address = new Address();
             address.AddressID = addressID;
@@ -388,8 +386,6 @@ namespace Ometz.RFQ.DAL
             address.State = state;
             address.PostalCode = postalCode;
             address.Country = country;
-            address.Phone = phone;
-            address.Email = email;
             return address;
         }
 
@@ -590,78 +586,6 @@ namespace Ometz.RFQ.DAL
         private global::System.String _Country;
         partial void OnCountryChanging(global::System.String value);
         partial void OnCountryChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Phone
-        {
-            get
-            {
-                return _Phone;
-            }
-            set
-            {
-                OnPhoneChanging(value);
-                ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Phone");
-                OnPhoneChanged();
-            }
-        }
-        private global::System.String _Phone;
-        partial void OnPhoneChanging(global::System.String value);
-        partial void OnPhoneChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Fax
-        {
-            get
-            {
-                return _Fax;
-            }
-            set
-            {
-                OnFaxChanging(value);
-                ReportPropertyChanging("Fax");
-                _Fax = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Fax");
-                OnFaxChanged();
-            }
-        }
-        private global::System.String _Fax;
-        partial void OnFaxChanging(global::System.String value);
-        partial void OnFaxChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Email
-        {
-            get
-            {
-                return _Email;
-            }
-            set
-            {
-                OnEmailChanging(value);
-                ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Email");
-                OnEmailChanged();
-            }
-        }
-        private global::System.String _Email;
-        partial void OnEmailChanging(global::System.String value);
-        partial void OnEmailChanged();
 
         #endregion
     

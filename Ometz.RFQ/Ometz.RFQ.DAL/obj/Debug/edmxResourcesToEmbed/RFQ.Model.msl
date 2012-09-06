@@ -12,9 +12,6 @@
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
           <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Fax" ColumnName="Fax" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -33,6 +30,9 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CompanyTypeID" ColumnName="CompanyTypeID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,11 +47,11 @@
     <EntitySetMapping Name="Quotes">
       <EntityTypeMapping TypeName="RFQModel.Quote">
         <MappingFragment StoreEntitySet="Quote">
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
           <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -15,5 +15,10 @@ namespace Ometz.Representative.UI
         {
             InitializeComponent();
         }
+
+        private void CategoryTree_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -73,9 +73,6 @@
     <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="PostalCode" Type="nvarchar" Nullable="false" MaxLength="12" />
     <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="30" />
-    <Property Name="Fax" Type="nvarchar" MaxLength="30" />
-    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -92,6 +89,9 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="CompanyTypeID" Type="int" Nullable="false" />
     <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
   </EntityType>
   <EntityType Name="CompanyType">
     <Key>
@@ -117,7 +117,7 @@
     <Property Name="QuoteBidID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="QuoteID" Type="int" Nullable="false" />
     <Property Name="QuoteParticipantID" Type="int" Nullable="false" />
-    <Property Name="Amount" Type="decimal" Nullable="false" Scale="4" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="Notes" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="QuoteDetail">
@@ -127,7 +127,7 @@
     <Property Name="QuoteDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="QuoteID" Type="int" Nullable="false" />
     <Property Name="Text" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Value" Type="decimal" Nullable="false" Scale="4" />
+    <Property Name="Value" Type="decimal" Nullable="false" Scale="2" />
   </EntityType>
   <EntityType Name="QuoteParticipant">
     <Key>
