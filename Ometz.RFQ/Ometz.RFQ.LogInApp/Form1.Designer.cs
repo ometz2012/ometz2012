@@ -109,6 +109,7 @@
             this.Controls.Add(this.buttonLogIn);
             this.Name = "Form1";
             this.Text = "Log In into RFQ application";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

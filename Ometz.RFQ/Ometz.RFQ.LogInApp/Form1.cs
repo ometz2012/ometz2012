@@ -120,7 +120,7 @@ namespace Ometz.RFQ.LogInApp
 
             if (companyTypeID == 2)
             {
-                Ometz.Supplier.UI.Form1 newForm = new Ometz.Supplier.UI.Form1(UserLoggedIn.CompanyID);
+                Ometz.Supplier.UI.frmSupplierMain newForm = new Ometz.Supplier.UI.frmSupplierMain(UserLoggedIn.CompanyID);
                 newForm.ShowDialog();
                 newForm.Activate();
                 this.Hide();
@@ -134,6 +134,11 @@ namespace Ometz.RFQ.LogInApp
             }
 
         }
+
+       private void Form1_Load(object sender, EventArgs e)
+       {
+
+       }
 
     }
 

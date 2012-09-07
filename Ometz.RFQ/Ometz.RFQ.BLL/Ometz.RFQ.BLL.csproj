@@ -53,8 +53,8 @@
     <Compile Include="ICompany.cs" />
     <Compile Include="IQuote.cs" />
     <Compile Include="IQuoteParticipant.cs" />
-    <Compile Include="Ometz.RFQ.Bids.BLL.cs" />
-    <Compile Include="Ometz.RFQ.Quotes.BLL.cs" />
+    <Compile Include="Bid.cs" />
+    <Compile Include="Quote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteParticipantService.cs" />
     <Compile Include="QuoteService.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace Ometz.Supplier.UI
 {
-    partial class Form1
+    partial class frmSupplierMain
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@
             this.btnCreateNewBid.UseVisualStyleBackColor = true;
             this.btnCreateNewBid.Click += new System.EventHandler(this.btnCreateNewBid_Click);
             // 
-            // Form1
+            // frmSupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,8 +83,9 @@
             this.Controls.Add(this.btnShowMyBids);
             this.Controls.Add(this.btnShowQuotes);
             this.Controls.Add(this.dgvBidsInfo);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmSupplierMain";
+            this.Text = "Supplier";
+            this.Load += new System.EventHandler(this.frmSupplierMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidsInfo)).EndInit();
             this.ResumeLayout(false);
 

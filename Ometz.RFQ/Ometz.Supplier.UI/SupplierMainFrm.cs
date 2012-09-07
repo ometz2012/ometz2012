@@ -10,10 +10,10 @@ using Ometz.RFQ.BLL;
 
 namespace Ometz.Supplier.UI
 {
-    public partial class Form1 : Form
+    public partial class frmSupplierMain : Form
     {
         public int compId;
-        public Form1(int companyID)
+        public frmSupplierMain(int companyID)
         {
 
             InitializeComponent();
@@ -31,6 +31,9 @@ namespace Ometz.Supplier.UI
 
             QuoteDTO quotesToShow = new QuoteDTO();
             dgvBidsInfo.DataSource = quotesToShow.DTO_BidToShow();
+            dgvBidsInfo.Columns["CompanyID"].Visible = false;
+            dgvBidsInfo.Columns["Text"].Visible = false;
+            dgvBidsInfo.Columns["Status"].Visible = false;
 
         }
 
@@ -50,10 +53,10 @@ namespace Ometz.Supplier.UI
             //bidToCreate.setNewBid(objectToSend,compId);
 
         }
-            
-        
-       
 
-       
+        private void frmSupplierMain_Load(object sender, EventArgs e)
+        {
+
+        }                                
     }
 }

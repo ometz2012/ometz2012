@@ -15,7 +15,7 @@ namespace Ometz.Supplier.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewBid());
+            Application.Run(new frmSupplierMain(2));
         }
     }
 }

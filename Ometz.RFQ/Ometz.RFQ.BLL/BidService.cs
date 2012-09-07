@@ -60,10 +60,10 @@ namespace Ometz.RFQ.BLL
                 transaction.Complete();
                 
 
-            }  // new
-                } // end of try
+            }  
+         } 
 
-        }
+       }
     }
 
 
