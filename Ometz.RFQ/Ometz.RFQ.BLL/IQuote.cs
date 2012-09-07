@@ -28,5 +28,9 @@ namespace Ometz.RFQ.BLL
         bool RemoveSuppliersFromQuotation(List<ParticipantDTO> participantIDList);
 
        
+        //Method that terminate RFQ before the Due Date 
+         bool TerminationRFQ(int quoteIDTerminate);
+
+                    
     }
 }

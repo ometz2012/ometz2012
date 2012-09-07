@@ -99,6 +99,12 @@ namespace Ometz.Representative.UI
                     if (check)
                     {
                         MessageBox.Show("Quote was created. ", "app", MessageBoxButtons.OK);
+
+                       // QuoteDTO quotesToShow = new QuoteDTO();
+                        //dataGridQuote.DataSource = quotesToShow.DTO_BidToShow();
+                        MainMenu mm = new MainMenu(companyIDIn);
+                        mm.LoadData();
+
                         this.Close();
                     }
                     else

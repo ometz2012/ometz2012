@@ -60,11 +60,23 @@
     <Compile Include="CreateRFQ.Designer.cs">
       <DependentUpon>CreateRFQ.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPartcipant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPartcipant.Designer.cs">
+      <DependentUpon>AddPartcipant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main Menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main Menu.Designer.cs">
       <DependentUpon>Main Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParticipantRFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParticipantRFQ.Designer.cs">
+      <DependentUpon>ParticipantRFQ.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +92,14 @@
     <EmbeddedResource Include="CreateRFQ.resx">
       <DependentUpon>CreateRFQ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddPartcipant.resx">
+      <DependentUpon>AddPartcipant.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main Menu.resx">
       <DependentUpon>Main Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParticipantRFQ.resx">
+      <DependentUpon>ParticipantRFQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

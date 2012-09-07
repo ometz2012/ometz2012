@@ -31,7 +31,7 @@
             this.CompanyNameLbl = new System.Windows.Forms.Label();
             this.QuotesLbl = new System.Windows.Forms.Label();
             this.SuppliersLbl = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridQuote = new System.Windows.Forms.DataGridView();
             this.CreateRFQBtn = new System.Windows.Forms.Button();
             this.ParticipantBtn = new System.Windows.Forms.Button();
             this.TerminateRFQBtn = new System.Windows.Forms.Button();
@@ -44,7 +44,8 @@
             this.SearchSupplBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SearchQuoteBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.AddQuotDetailBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridQuote)).BeginInit();
             this.SuspendLayout();
             // 
             // CompanyNameLbl
@@ -60,7 +61,7 @@
             // 
             this.QuotesLbl.AutoSize = true;
             this.QuotesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuotesLbl.Location = new System.Drawing.Point(90, 43);
+            this.QuotesLbl.Location = new System.Drawing.Point(181, 43);
             this.QuotesLbl.Name = "QuotesLbl";
             this.QuotesLbl.Size = new System.Drawing.Size(81, 25);
             this.QuotesLbl.TabIndex = 1;
@@ -70,25 +71,26 @@
             // 
             this.SuppliersLbl.AutoSize = true;
             this.SuppliersLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuppliersLbl.Location = new System.Drawing.Point(533, 43);
+            this.SuppliersLbl.Location = new System.Drawing.Point(781, 43);
             this.SuppliersLbl.Name = "SuppliersLbl";
             this.SuppliersLbl.Size = new System.Drawing.Size(102, 25);
             this.SuppliersLbl.TabIndex = 2;
             this.SuppliersLbl.Text = "Suppliers";
             // 
-            // dataGridView1
+            // dataGridQuote
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 80);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(287, 324);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridQuote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridQuote.Location = new System.Drawing.Point(3, 80);
+            this.dataGridQuote.Name = "dataGridQuote";
+            this.dataGridQuote.Size = new System.Drawing.Size(586, 324);
+            this.dataGridQuote.TabIndex = 3;
+            this.dataGridQuote.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RowHeaderMouseClick);
             // 
             // CreateRFQBtn
             // 
-            this.CreateRFQBtn.Location = new System.Drawing.Point(321, 92);
+            this.CreateRFQBtn.Location = new System.Drawing.Point(609, 92);
             this.CreateRFQBtn.Name = "CreateRFQBtn";
-            this.CreateRFQBtn.Size = new System.Drawing.Size(100, 23);
+            this.CreateRFQBtn.Size = new System.Drawing.Size(92, 23);
             this.CreateRFQBtn.TabIndex = 4;
             this.CreateRFQBtn.Text = "Create RFQ\r\n";
             this.CreateRFQBtn.UseVisualStyleBackColor = true;
@@ -96,34 +98,37 @@
             // 
             // ParticipantBtn
             // 
-            this.ParticipantBtn.Location = new System.Drawing.Point(321, 139);
+            this.ParticipantBtn.Location = new System.Drawing.Point(609, 172);
             this.ParticipantBtn.Name = "ParticipantBtn";
             this.ParticipantBtn.Size = new System.Drawing.Size(100, 23);
             this.ParticipantBtn.TabIndex = 5;
             this.ParticipantBtn.Text = "Participants";
             this.ParticipantBtn.UseVisualStyleBackColor = true;
+            this.ParticipantBtn.Click += new System.EventHandler(this.ParticipantBtn_Click);
             // 
             // TerminateRFQBtn
             // 
-            this.TerminateRFQBtn.Location = new System.Drawing.Point(321, 186);
+            this.TerminateRFQBtn.Location = new System.Drawing.Point(610, 214);
             this.TerminateRFQBtn.Name = "TerminateRFQBtn";
             this.TerminateRFQBtn.Size = new System.Drawing.Size(100, 23);
             this.TerminateRFQBtn.TabIndex = 6;
             this.TerminateRFQBtn.Text = "Terminate RFQ";
             this.TerminateRFQBtn.UseVisualStyleBackColor = true;
+            this.TerminateRFQBtn.Click += new System.EventHandler(this.TerminateRFQBtn_Click);
             // 
             // RFQWinnersBtn
             // 
-            this.RFQWinnersBtn.Location = new System.Drawing.Point(321, 233);
+            this.RFQWinnersBtn.Location = new System.Drawing.Point(609, 256);
             this.RFQWinnersBtn.Name = "RFQWinnersBtn";
             this.RFQWinnersBtn.Size = new System.Drawing.Size(100, 23);
             this.RFQWinnersBtn.TabIndex = 7;
             this.RFQWinnersBtn.Text = "RFQ\'s Winners";
             this.RFQWinnersBtn.UseVisualStyleBackColor = true;
+            this.RFQWinnersBtn.Click += new System.EventHandler(this.RFQWinnersBtn_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(321, 289);
+            this.textBox1.Location = new System.Drawing.Point(610, 301);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 8;
@@ -131,7 +136,7 @@
             // SearchLbl
             // 
             this.SearchLbl.AutoSize = true;
-            this.SearchLbl.Location = new System.Drawing.Point(337, 312);
+            this.SearchLbl.Location = new System.Drawing.Point(630, 324);
             this.SearchLbl.Name = "SearchLbl";
             this.SearchLbl.Size = new System.Drawing.Size(57, 26);
             this.SearchLbl.TabIndex = 9;
@@ -139,30 +144,30 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(458, 80);
+            this.treeView1.Location = new System.Drawing.Point(744, 80);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(262, 324);
+            this.treeView1.Size = new System.Drawing.Size(193, 324);
             this.treeView1.TabIndex = 10;
             // 
             // CreateBtn
             // 
-            this.CreateBtn.Location = new System.Drawing.Point(738, 92);
+            this.CreateBtn.Location = new System.Drawing.Point(943, 92);
             this.CreateBtn.Name = "CreateBtn";
-            this.CreateBtn.Size = new System.Drawing.Size(100, 23);
+            this.CreateBtn.Size = new System.Drawing.Size(88, 23);
             this.CreateBtn.TabIndex = 11;
             this.CreateBtn.Text = "Create ";
             this.CreateBtn.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(738, 139);
+            this.textBox2.Location = new System.Drawing.Point(943, 154);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(88, 20);
             this.textBox2.TabIndex = 12;
             // 
             // SearchSupplBtn
             // 
-            this.SearchSupplBtn.Location = new System.Drawing.Point(754, 186);
+            this.SearchSupplBtn.Location = new System.Drawing.Point(952, 205);
             this.SearchSupplBtn.Name = "SearchSupplBtn";
             this.SearchSupplBtn.Size = new System.Drawing.Size(75, 23);
             this.SearchSupplBtn.TabIndex = 13;
@@ -172,7 +177,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(747, 162);
+            this.label1.Location = new System.Drawing.Point(949, 177);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 14;
@@ -180,18 +185,30 @@
             // 
             // SearchQuoteBtn
             // 
-            this.SearchQuoteBtn.Location = new System.Drawing.Point(330, 341);
+            this.SearchQuoteBtn.Location = new System.Drawing.Point(623, 353);
             this.SearchQuoteBtn.Name = "SearchQuoteBtn";
             this.SearchQuoteBtn.Size = new System.Drawing.Size(78, 23);
             this.SearchQuoteBtn.TabIndex = 15;
             this.SearchQuoteBtn.Text = "Search";
             this.SearchQuoteBtn.UseVisualStyleBackColor = true;
+            this.SearchQuoteBtn.Click += new System.EventHandler(this.SearchQuoteBtn_Click);
             // 
-            // Form1
+            // AddQuotDetailBtn
+            // 
+            this.AddQuotDetailBtn.Location = new System.Drawing.Point(609, 130);
+            this.AddQuotDetailBtn.Name = "AddQuotDetailBtn";
+            this.AddQuotDetailBtn.Size = new System.Drawing.Size(100, 23);
+            this.AddQuotDetailBtn.TabIndex = 16;
+            this.AddQuotDetailBtn.Text = "Add Quote Detail";
+            this.AddQuotDetailBtn.UseVisualStyleBackColor = true;
+            this.AddQuotDetailBtn.Click += new System.EventHandler(this.AddQuotDetailBtn_Click);
+            // 
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 416);
+            this.ClientSize = new System.Drawing.Size(1043, 416);
+            this.Controls.Add(this.AddQuotDetailBtn);
             this.Controls.Add(this.SearchQuoteBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchSupplBtn);
@@ -204,13 +221,13 @@
             this.Controls.Add(this.TerminateRFQBtn);
             this.Controls.Add(this.ParticipantBtn);
             this.Controls.Add(this.CreateRFQBtn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridQuote);
             this.Controls.Add(this.SuppliersLbl);
             this.Controls.Add(this.QuotesLbl);
             this.Controls.Add(this.CompanyNameLbl);
-            this.Name = "Form1";
+            this.Name = "MainMenu";
             this.Text = "Main Menu";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridQuote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +238,7 @@
         private System.Windows.Forms.Label CompanyNameLbl;
         private System.Windows.Forms.Label QuotesLbl;
         private System.Windows.Forms.Label SuppliersLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridQuote;
         private System.Windows.Forms.Button CreateRFQBtn;
         private System.Windows.Forms.Button ParticipantBtn;
         private System.Windows.Forms.Button TerminateRFQBtn;
@@ -234,6 +251,7 @@
         private System.Windows.Forms.Button SearchSupplBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SearchQuoteBtn;
+        private System.Windows.Forms.Button AddQuotDetailBtn;
     }
 }
 

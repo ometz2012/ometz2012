@@ -16,3 +16,9 @@ C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RF
 C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
 C:\Users\ometz\Documents\Visual Studio 2010\Projects\Project8_5.08.2012\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb
+C:\Users\student01\Documents\Visual Studio 2010\Projects\Project1Sept.05\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll.config
+C:\Users\student01\Documents\Visual Studio 2010\Projects\Project1Sept.05\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll
+C:\Users\student01\Documents\Visual Studio 2010\Projects\Project1Sept.05\trunk\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.pdb
+C:\Users\student01\Documents\Visual Studio 2010\Projects\Project1Sept.05\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\student01\Documents\Visual Studio 2010\Projects\Project1Sept.05\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
+C:\Users\student01\Documents\Visual Studio 2010\Projects\Project1Sept.05\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb

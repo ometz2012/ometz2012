@@ -7,11 +7,12 @@ using Ometz.RFQ.BLL.Model;
 using System.Transactions;
 using System.Data;
 
+
 namespace Ometz.RFQ.BLL
 {
     public class QuoteService:IQuote
     {
-        //Method that creates new Quotation 
+        //Method that creates new Quotation ****CREATE RFQ BUTTON***
         public QuoteAdded CreateNewQuoation(QuoteDTO QuoteNew)
         {
             bool check = false;
@@ -72,7 +73,7 @@ namespace Ometz.RFQ.BLL
         }//End of the method that creates new quotation
 
 
-        //Method that adds new details row to the QuoteDetail
+        //Method that adds new details row to the QuoteDetail ****ADD DETAILS BUTTON***
         public bool CreateNewQuoteDetail(QuoteDetailToCreateDTO QuoteDetailNew)
         {
             bool check = false;
@@ -123,7 +124,7 @@ namespace Ometz.RFQ.BLL
 
         }
 
-        //Method that gets all the quotes by companyID 
+        //Method that gets all the quotes by companyID   *****SEARCH BUTTON*** 
         //Arranges them from the new to the old by QuoteID
         //And presents them with their details
         //Quotes with no details will show "No Details" and Value "0"
@@ -164,7 +165,7 @@ namespace Ometz.RFQ.BLL
         }
 
 
-        //Method that adds list of suppliers (Participants) to the quotaion Suppliers=Companies
+        //Method that adds list of suppliers (Participants) to the quotaion Suppliers=Companies ****ADD PARTICIPANT****
         // Method takes list of integers with companyIDs and the quotation ID
         public bool AddSuppliersToQuotation(List<ParticipantDTO> particpantsList)
         {
@@ -243,7 +244,7 @@ namespace Ometz.RFQ.BLL
         }
 
 
-        //Method that removes suppliers (Participants) from quotation
+        //Method that removes suppliers (Participants) from quotation ****REMOVE PARTICIPANT***
         //Method takes list of integers with ParticipantId
         public bool RemoveSuppliersFromQuotation(List<ParticipantDTO> participantIDList)
         {
@@ -298,7 +299,7 @@ namespace Ometz.RFQ.BLL
         }//method
 
 
-        //Method that terminate RFQ before the Due Date
+        //Method that terminate RFQ before the Due Date ****TERMINATE RFQ BUTTON****
 
         public bool TerminationRFQ(int quoteIDTerminate)
         {
@@ -351,9 +352,6 @@ namespace Ometz.RFQ.BLL
         }
 
 
-
-
-
-
+        
     }
 }
