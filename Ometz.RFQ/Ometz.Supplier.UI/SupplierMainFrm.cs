@@ -32,7 +32,7 @@ namespace Ometz.Supplier.UI
             QuoteDTO quotesToShow = new QuoteDTO();
             dgvBidsInfo.DataSource = quotesToShow.DTO_BidToShow();
             dgvBidsInfo.Columns["CompanyID"].Visible = false;
-            //dgvBidsInfo.Columns["Text"].Visible = false;
+            dgvBidsInfo.Columns["QuoteID"].Visible = false;
             dgvBidsInfo.Columns["Status"].Visible = false;
 
         }
