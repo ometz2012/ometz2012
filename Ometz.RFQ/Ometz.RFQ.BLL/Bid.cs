@@ -44,11 +44,11 @@ namespace Ometz.RFQ.BLL
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public List<QuoteBidDTO> ShowParticipantBids(int quoteParticipantID)
+        public IList<QuoteBidDTO> ShowParticipantBids(int quoteParticipantID)
         {
             
-            List<QuoteBid> bids = new List<QuoteBid>();
-            List<QuoteBidDTO> bidsToReturn = new List<QuoteBidDTO>();
+            IList<QuoteBid> bids = new List<QuoteBid>();
+            IList<QuoteBidDTO> bidsToReturn = new List<QuoteBidDTO>();
             using (var context = new RFQEntities())
             {
                 bids = (from bid in context.QuoteBids.Include("Quote").Include("Quote.Company").Include("Quote.Company.CompanyType")

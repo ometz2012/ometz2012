@@ -18,7 +18,7 @@ namespace Ometz.RFQ.BLL
         //And presents them with their details
         //Quotes with no details will show "No Details" and Value "0"
         List<QuoteDetailDTO> GetQuoteDetail(int CompanyID);
-
+       
         //Method that adds list of suppliers (Participants) to the quotaion Suppliers=Companies
         // Method takes List<DTOParticipantToShow>
         bool AddSuppliersToQuotation(List<ParticipantDTO> particpantsList);
@@ -31,6 +31,7 @@ namespace Ometz.RFQ.BLL
         //Method that terminate RFQ before the Due Date 
          bool TerminationRFQ(int quoteIDTerminate);
 
-                    
+        //Method that shows all the active quotes    
+         List<QuoteDTO> GetAllActiveQuotes(int companyId);
     }
 }

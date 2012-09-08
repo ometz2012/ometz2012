@@ -227,6 +227,7 @@
             this.Controls.Add(this.CompanyNameLbl);
             this.Name = "MainMenu";
             this.Text = "Main Menu";
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

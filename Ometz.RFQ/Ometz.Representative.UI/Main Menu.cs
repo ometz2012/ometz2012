@@ -31,8 +31,8 @@ namespace Ometz.Representative.UI
         
         private void CreateRFQBtn_Click(object sender, EventArgs e)
         {
-            CreateRFQ createRFQ = new CreateRFQ(this.companyID);
-            createRFQ.ShowDialog(this);
+            CreateRFQ createRFQ = new CreateRFQ(this.companyID, this);
+            createRFQ.Show(this);
         }
 
 
@@ -114,9 +114,15 @@ namespace Ometz.Representative.UI
         
         public void LoadData()
         {
+            //dataGridQuote.Rows.Clear();
             QuoteDTO quotesToShow = new QuoteDTO();
-            dataGridQuote.DataSource = quotesToShow.DTO_BidToShow();
-        
+            this.dataGridQuote.DataSource = quotesToShow.DTO_BidToShow();
+           
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+           // LoadData();
         }
 
         

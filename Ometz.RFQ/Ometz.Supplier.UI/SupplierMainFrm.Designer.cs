@@ -32,6 +32,7 @@
             this.btnShowQuotes = new System.Windows.Forms.Button();
             this.btnShowMyBids = new System.Windows.Forms.Button();
             this.btnCreateNewBid = new System.Windows.Forms.Button();
+            this.btnActiveBids = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidsInfo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +75,22 @@
             this.btnCreateNewBid.UseVisualStyleBackColor = true;
             this.btnCreateNewBid.Click += new System.EventHandler(this.btnCreateNewBid_Click);
             // 
+            // btnActiveBids
+            // 
+            this.btnActiveBids.Location = new System.Drawing.Point(277, 227);
+            this.btnActiveBids.Name = "btnActiveBids";
+            this.btnActiveBids.Size = new System.Drawing.Size(90, 23);
+            this.btnActiveBids.TabIndex = 4;
+            this.btnActiveBids.Text = "ActiveQuotes";
+            this.btnActiveBids.UseVisualStyleBackColor = true;
+            this.btnActiveBids.Click += new System.EventHandler(this.btnActiveBids_Click);
+            // 
             // frmSupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 263);
+            this.Controls.Add(this.btnActiveBids);
             this.Controls.Add(this.btnCreateNewBid);
             this.Controls.Add(this.btnShowMyBids);
             this.Controls.Add(this.btnShowQuotes);
@@ -97,6 +109,7 @@
         private System.Windows.Forms.Button btnShowQuotes;
         private System.Windows.Forms.Button btnShowMyBids;
         private System.Windows.Forms.Button btnCreateNewBid;
+        private System.Windows.Forms.Button btnActiveBids;
     }
 }
 

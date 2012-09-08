@@ -57,6 +57,14 @@ namespace Ometz.Supplier.UI
         private void frmSupplierMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnActiveBids_Click(object sender, EventArgs e)
+        {
+           // QuoteService qs = new QuoteService();
+            IQuote quote = new QuoteService();
+            dgvBidsInfo.DataSource = quote.GetQuoteDetail(compId);
+            
         }                                
     }
 }

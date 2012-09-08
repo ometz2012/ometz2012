@@ -14,10 +14,13 @@ namespace Ometz.Representative.UI
     public partial class CreateRFQ : Form
     {
         int companyIDIn;
-        public CreateRFQ(int companyId)
+        MainMenu instanceMainForm;
+        public CreateRFQ(int companyId, MainMenu mainMenuForm)
+           
         {
             InitializeComponent();
             companyIDIn = companyId;
+            instanceMainForm = mainMenuForm;
             this.textBoxStartDate.KeyPress += new KeyPressEventHandler(ApplicationServices.Number_KeyPress);
             this.textBoxEndDate.KeyPress += new KeyPressEventHandler(ApplicationServices.Number_KeyPress);
             this.textBoxQuantity.KeyPress += new KeyPressEventHandler(ApplicationServices.Number_KeyPress);
@@ -99,13 +102,10 @@ namespace Ometz.Representative.UI
                     if (check)
                     {
                         MessageBox.Show("Quote was created. ", "app", MessageBoxButtons.OK);
-
-                       // QuoteDTO quotesToShow = new QuoteDTO();
-                        //dataGridQuote.DataSource = quotesToShow.DTO_BidToShow();
-                        MainMenu mm = new MainMenu(companyIDIn);
-                        mm.LoadData();
-
+                       
                         this.Close();
+                       //MainMenu mm = new MainMenu(companyIDIn);
+                        instanceMainForm.LoadData();
                     }
                     else
                     {
@@ -143,6 +143,11 @@ namespace Ometz.Representative.UI
                 MessageBox.Show("Quanity should be decimal. ", "app", MessageBoxButtons.OK);
  
             }
+
+        }
+
+        private void CreateRFQ_Load(object sender, EventArgs e)
+        {
 
         }
 

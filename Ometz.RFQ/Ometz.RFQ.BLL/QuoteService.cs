@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Ometz.RFQ.BLL
 {
-    public class QuoteService:IQuote
+    public class QuoteService : IQuote
     {
         //Method that creates new Quotation ****CREATE RFQ BUTTON***
         public QuoteAdded CreateNewQuoation(QuoteDTO QuoteNew)
@@ -47,7 +47,7 @@ namespace Ometz.RFQ.BLL
 
                         int id = QuoteIn.QuoteID;
                         QuoteValidation.LastId = id;
-                       
+
 
                     }
 
@@ -94,7 +94,6 @@ namespace Ometz.RFQ.BLL
 
                         //Adding refernces
                         QuoteDetailIn.Quote = existingQuote;
-
 
                         if (QuoteDetailIn.EntityState == EntityState.Detached)
                         {
@@ -350,8 +349,40 @@ namespace Ometz.RFQ.BLL
             }
 
         }
+        //Method that returns all the active quotes by company ID (the company doesn't participate in these quotes yet
+        // Method is written for SupplierUI
+        public List<QuoteDTO> GetAllActiveQuotes(int companyId)
+        {
+            // IList<Quote> quotes = new List<Quote>();
+            List<QuoteDTO> quotesToReturn = new List<QuoteDTO>();
+            using (var context = new RFQEntities())
+            {
+              
+                var quotes = (from quote in context.Quotes
+                              where quote.CompanyID != companyId && quote.Status == true
+                              select quote).ToList();
+                if (quotes.Count > 0)
+                {
+                    foreach (var quote in quotes)
+                    {
+                        QuoteDTO quoteToRow = new QuoteDTO()
+                      {
+                          QuoteID = quote.QuoteID,
+                          CompanyID = quote.CompanyID,
+                          StartDate = quote.StartDate,
+                          EndDate = quote.EndDate,
+                          Status = quote.Status                          
+                      };
+                        quotesToReturn.Add(quoteToRow);
+                    }
+
+                }
 
 
-        
+
+
+            }
+            return quotesToReturn;
+        }
     }
 }
