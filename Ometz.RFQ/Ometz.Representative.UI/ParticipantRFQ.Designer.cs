@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvParticipantsInQuote = new System.Windows.Forms.DataGridView();
             this.AddParticipBtn = new System.Windows.Forms.Button();
             this.RemovePartBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParticipantsInQuote)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -44,13 +44,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
-            // dataGridView1
+            // dgvParticipantsInQuote
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(470, 202);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvParticipantsInQuote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvParticipantsInQuote.Location = new System.Drawing.Point(28, 43);
+            this.dgvParticipantsInQuote.Name = "dgvParticipantsInQuote";
+            this.dgvParticipantsInQuote.Size = new System.Drawing.Size(470, 202);
+            this.dgvParticipantsInQuote.TabIndex = 1;
             // 
             // AddParticipBtn
             // 
@@ -72,18 +72,19 @@
             this.RemovePartBtn.UseVisualStyleBackColor = true;
             this.RemovePartBtn.Click += new System.EventHandler(this.RemovePartBtn_Click);
             // 
-            // Participant
+            // ParticipantRFQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 334);
             this.Controls.Add(this.RemovePartBtn);
             this.Controls.Add(this.AddParticipBtn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvParticipantsInQuote);
             this.Controls.Add(this.label1);
-            this.Name = "Participant";
+            this.Name = "ParticipantRFQ";
             this.Text = "Participant";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ParticipantRFQ_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParticipantsInQuote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvParticipantsInQuote;
         private System.Windows.Forms.Button AddParticipBtn;
         private System.Windows.Forms.Button RemovePartBtn;
     }

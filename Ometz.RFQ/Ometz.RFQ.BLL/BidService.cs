@@ -25,7 +25,7 @@ namespace Ometz.RFQ.BLL
                     
                     QuoteParticipant newQuoteParticipant = new QuoteParticipant();
                     QuoteParticipantBase newParticipant;
-                    newParticipant = newParticipantSupplier.getQuoteParticipant(companyId, newBid.QuoteID);
+                    newParticipant = newParticipantSupplier.GetQuoteParticipant(companyId, newBid.QuoteID);
                     newQuoteParticipant.QuoteParticipantID = newParticipant.QuoteParticipantID;
                     QuoteBid newBidToCreate = new QuoteBid()
                     {

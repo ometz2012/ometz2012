@@ -54,6 +54,7 @@
     <Compile Include="IQuote.cs" />
     <Compile Include="IQuoteParticipant.cs" />
     <Compile Include="Bid.cs" />
+    <Compile Include="ParticipantByQuoteDTO.cs" />
     <Compile Include="Quote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteParticipantService.cs" />

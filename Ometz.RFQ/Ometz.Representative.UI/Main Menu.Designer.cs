@@ -84,6 +84,7 @@
             this.dataGridQuote.Name = "dataGridQuote";
             this.dataGridQuote.Size = new System.Drawing.Size(586, 324);
             this.dataGridQuote.TabIndex = 3;
+            this.dataGridQuote.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuote_CellContentClick);
             this.dataGridQuote.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RowHeaderMouseClick);
             // 
             // CreateRFQBtn
@@ -227,6 +228,7 @@
             this.Controls.Add(this.CompanyNameLbl);
             this.Name = "MainMenu";
             this.Text = "Main Menu";
+            this.Activated += new System.EventHandler(this.MainMenu_Load);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuote)).EndInit();
             this.ResumeLayout(false);

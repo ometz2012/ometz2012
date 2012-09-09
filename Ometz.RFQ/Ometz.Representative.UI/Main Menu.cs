@@ -14,7 +14,7 @@ namespace Ometz.Representative.UI
     public partial class MainMenu : Form
     {
 
-        int companyID;
+        int companyID;        
         int quoteIDSelected;
          
 
@@ -39,7 +39,7 @@ namespace Ometz.Representative.UI
      
         private void ParticipantBtn_Click(object sender, EventArgs e)
         {
-            ParticipantRFQ participRFQ = new ParticipantRFQ();
+            ParticipantRFQ participRFQ = new ParticipantRFQ(quoteIDSelected);
             participRFQ.ShowDialog(this);
         }
         
@@ -102,7 +102,15 @@ namespace Ometz.Representative.UI
             
         
             int rowNumber = e.RowIndex;
-            quoteIDSelected = Convert.ToInt32((dataGridQuote.Rows[rowNumber].Cells[0]));
+            int value;          
+            bool result = int.TryParse(dataGridQuote.SelectedRows[0].Cells[2].Value.ToString(), out value);
+            if (result)
+            {
+                quoteIDSelected = value;
+                ParticipantBtn.Enabled = true;
+
+            }
+
         
         }
 
@@ -114,15 +122,21 @@ namespace Ometz.Representative.UI
         
         public void LoadData()
         {
-            //dataGridQuote.Rows.Clear();
-            QuoteDTO quotesToShow = new QuoteDTO();
-            this.dataGridQuote.DataSource = quotesToShow.DTO_BidToShow();
-           
+            ParticipantBtn.Enabled = false;
+            QuoteDTO quotesToShow = new QuoteDTO();           
+            this.dataGridQuote.DataSource = quotesToShow.GetBid();
+            dataGridQuote.Columns["CompanyID"].Visible = false;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-           // LoadData();
+            dataGridQuote.ClearSelection();
+            ParticipantBtn.Enabled = false;
+        }
+
+        private void dataGridQuote_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         

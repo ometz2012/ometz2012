@@ -44,7 +44,8 @@ namespace Ometz.RFQ.BLL
                 }
             }
         }
-        public QuoteParticipantBase getQuoteParticipant(int companyId, int quoteId)
+        // This method returns the single Supplier Participant in the particular quote
+        public QuoteParticipantBase GetQuoteParticipant(int companyId, int quoteId)
         {
             using (var context = new RFQEntities())
             {
@@ -64,5 +65,45 @@ namespace Ometz.RFQ.BLL
             }
 
         }
-    }
-}
+        // Method returns all the participants by a particular quote
+        public List<ParticipantByQuoteDTO> GetQuoteParticipant(int quoteId)
+        {
+            List<ParticipantByQuoteDTO> quoteAllParticipants = new List<ParticipantByQuoteDTO>();
+            List <QuoteParticipant> quoteParticipant = new List<QuoteParticipant>();
+            using (var context = new RFQEntities())
+            {
+                
+                  quoteParticipant = (from participant in context.QuoteParticipants.Include("Quote").
+                                        Include("QuoteBids").Include("Company").Include("Company.Category")
+                                        where participant.QuoteID == quoteId select participant).ToList();
+                  foreach (var participant in quoteParticipant)
+                  {
+                      ParticipantByQuoteDTO quoteRow = new ParticipantByQuoteDTO();
+                    
+                    quoteRow.QuoteParticipantID = participant.QuoteParticipantID;
+                    quoteRow.CompanyID = participant.CompanyID;
+                    quoteRow.CompanyName = participant.Company.Name;
+                    quoteRow.CategoryType = participant.Company.Category.Type;
+                    quoteRow.QuoteID = quoteId;
+                    
+                    foreach (var item in participant.QuoteBids)
+                    {
+                        quoteRow.Notes = item.Notes;
+                        quoteRow.Amount = item.Amount;
+                    }
+                    quoteAllParticipants.Add(quoteRow);
+
+                  
+                    }
+                  }
+
+                     return quoteAllParticipants;
+                  }
+                        
+            
+            }
+        }
+    
+
+
+

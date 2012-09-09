@@ -15,7 +15,7 @@ namespace Ometz.RFQ.BLL
         public string Text { get; set; }
         public decimal Value { get; set; }
         
-        public List<QuoteDTO> DTO_BidToShow()
+        public List<QuoteDTO> GetBid()
         {
             List<Quote> allQuotes = new List<Quote>();
             List<QuoteDTO> listQuotesOut = new List<QuoteDTO>();
