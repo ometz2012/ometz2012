@@ -41,13 +41,14 @@
             this.dgvBidsInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBidsInfo.Location = new System.Drawing.Point(12, 25);
             this.dgvBidsInfo.Name = "dgvBidsInfo";
-            this.dgvBidsInfo.Size = new System.Drawing.Size(689, 150);
+            this.dgvBidsInfo.Size = new System.Drawing.Size(604, 150);
             this.dgvBidsInfo.TabIndex = 0;
+            this.dgvBidsInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBidsInfo_CellContentClick_1);
             this.dgvBidsInfo.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBidsInfo_RowHeaderMouseClick);
             // 
             // btnShowQuotes
             // 
-            this.btnShowQuotes.Location = new System.Drawing.Point(612, 228);
+            this.btnShowQuotes.Location = new System.Drawing.Point(527, 218);
             this.btnShowQuotes.Name = "btnShowQuotes";
             this.btnShowQuotes.Size = new System.Drawing.Size(89, 23);
             this.btnShowQuotes.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             // btnShowMyBids
             // 
-            this.btnShowMyBids.Location = new System.Drawing.Point(517, 228);
+            this.btnShowMyBids.Location = new System.Drawing.Point(434, 219);
             this.btnShowMyBids.Name = "btnShowMyBids";
             this.btnShowMyBids.Size = new System.Drawing.Size(75, 23);
             this.btnShowMyBids.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // btnCreateNewBid
             // 
-            this.btnCreateNewBid.Location = new System.Drawing.Point(388, 228);
+            this.btnCreateNewBid.Location = new System.Drawing.Point(314, 219);
             this.btnCreateNewBid.Name = "btnCreateNewBid";
             this.btnCreateNewBid.Size = new System.Drawing.Size(101, 23);
             this.btnCreateNewBid.TabIndex = 3;
@@ -77,7 +78,7 @@
             // 
             // btnActiveBids
             // 
-            this.btnActiveBids.Location = new System.Drawing.Point(277, 227);
+            this.btnActiveBids.Location = new System.Drawing.Point(203, 218);
             this.btnActiveBids.Name = "btnActiveBids";
             this.btnActiveBids.Size = new System.Drawing.Size(90, 23);
             this.btnActiveBids.TabIndex = 4;
@@ -89,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 263);
+            this.ClientSize = new System.Drawing.Size(647, 263);
             this.Controls.Add(this.btnActiveBids);
             this.Controls.Add(this.btnCreateNewBid);
             this.Controls.Add(this.btnShowMyBids);

@@ -12,6 +12,7 @@ namespace Ometz.Supplier.UI
 {
     public partial class frmSupplierMain : Form
     {
+        public int requiredButton;
         public int compId;
         public int quoteId;
         DateTime startDate;
@@ -32,7 +33,8 @@ namespace Ometz.Supplier.UI
 
         private void btnShowQuotes_Click(object sender, EventArgs e)
         {
-
+            createNewBidButtonDisabling();
+            dgvBidsInfo.DataSource = null;
             QuoteDTO quotesToShow = new QuoteDTO();
             dgvBidsInfo.DataSource = quotesToShow.GetBid();
             dgvBidsInfo.Columns["CompanyID"].Visible = false;
@@ -43,12 +45,15 @@ namespace Ometz.Supplier.UI
 
         private void btnShowMyBids_Click(object sender, EventArgs e)
         {
+            createNewBidButtonDisabling();
+            dgvBidsInfo.DataSource = null;
             QuoteBidDTO bidsToShow = new QuoteBidDTO();
             dgvBidsInfo.DataSource = bidsToShow.ShowParticipantBids(3); // 2 is a participant ID
         }
 
         private void btnCreateNewBid_Click(object sender, EventArgs e)
         {
+            //requiredButton = 0;
             NewBidFrm _newBidForm = new NewBidFrm(compId);
             _newBidForm.LoadData(quoteId, startDate, endDate);
             _newBidForm.Show();
@@ -70,12 +75,14 @@ namespace Ometz.Supplier.UI
 
         private void btnActiveBids_Click(object sender, EventArgs e)
         {
+            requiredButton = 1;
+            dgvBidsInfo.DataSource = null;
            // QuoteService qs = new QuoteService();
-            IQuote quote = new QuoteService();
-            dgvBidsInfo.DataSource = quote.GetQuoteDetail(compId);
-            dgvBidsInfo.Columns["QuoteDetailId"].Visible = false;           
-            //dgvBidsInfo.Columns["QuoteId"].Width = 50;
+            IQuote quote = new QuoteService();           
+            dgvBidsInfo.DataSource = quote.GetAllActiveQuotes(compId);           
             dgvBidsInfo.Columns["QuoteId"].Visible = false;
+            dgvBidsInfo.Columns["CompanyId"].Visible = false;
+            dgvBidsInfo.Columns["Status"].Visible = false;
             dgvBidsInfo.Columns["Text"].DisplayIndex = 1;
             dgvBidsInfo.Columns["Text"].Width = 250;
             dgvBidsInfo.Columns["Value"].DisplayIndex = 2;
@@ -86,7 +93,7 @@ namespace Ometz.Supplier.UI
 
         private void dgvBidsInfo_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (dgvBidsInfo.Columns.Count == 6)
+            if (dgvBidsInfo.Columns.Count == 7 && requiredButton == 1)
             {
            // MessageBox.Show(" Hi, I'm in");
             int value;
@@ -121,6 +128,16 @@ namespace Ometz.Supplier.UI
                         return;
                     }
         }   
-      }                 
+      }
+
+        private void dgvBidsInfo_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void createNewBidButtonDisabling()
+        {
+            requiredButton = 0;
+            btnCreateNewBid.Enabled = false;
+        }
     }
 }

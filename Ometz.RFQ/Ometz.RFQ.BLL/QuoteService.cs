@@ -359,7 +359,7 @@ namespace Ometz.RFQ.BLL
             using (var context = new RFQEntities())
             {
               
-                var quotes = (from quote in context.Quotes
+                var quotes = (from quote in context.Quotes.Include("QuoteDetails")
                               where quote.CompanyID != companyId && quote.Status == 1
                               select quote).ToList();
                 if (quotes.Count > 0)
@@ -372,8 +372,14 @@ namespace Ometz.RFQ.BLL
                           CompanyID = quote.CompanyID,
                           StartDate = quote.StartDate,
                           EndDate = quote.EndDate,
-                          Status = quote.Status                          
+                          Status = quote.Status                        
                       };
+
+                        foreach (var item in quote.QuoteDetails)
+                        {
+                            quoteToRow.Text = item.Text;
+                            quoteToRow.Value = item.Value;
+                        }
                         quotesToReturn.Add(quoteToRow);
                     }
 
