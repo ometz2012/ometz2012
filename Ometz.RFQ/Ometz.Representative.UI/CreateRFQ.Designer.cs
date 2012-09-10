@@ -56,7 +56,7 @@
             // 
             this.QuantityLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.QuantityLbl.AutoSize = true;
-            this.QuantityLbl.Location = new System.Drawing.Point(212, 6);
+            this.QuantityLbl.Location = new System.Drawing.Point(211, 6);
             this.QuantityLbl.Name = "QuantityLbl";
             this.QuantityLbl.Size = new System.Drawing.Size(51, 26);
             this.QuantityLbl.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             this.StartDateLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StartDateLbl.AutoSize = true;
-            this.StartDateLbl.Location = new System.Drawing.Point(286, 6);
+            this.StartDateLbl.Location = new System.Drawing.Point(284, 6);
             this.StartDateLbl.Name = "StartDateLbl";
             this.StartDateLbl.Size = new System.Drawing.Size(85, 26);
             this.StartDateLbl.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(392, 6);
+            this.label4.Location = new System.Drawing.Point(391, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 26);
             this.label4.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             // textBoxEndDate
             // 
-            this.textBoxEndDate.Location = new System.Drawing.Point(379, 42);
+            this.textBoxEndDate.Location = new System.Drawing.Point(377, 42);
             this.textBoxEndDate.Name = "textBoxEndDate";
             this.textBoxEndDate.Size = new System.Drawing.Size(92, 20);
             this.textBoxEndDate.TabIndex = 4;
@@ -94,20 +94,20 @@
             this.textBoxDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxDescription.Location = new System.Drawing.Point(4, 42);
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(187, 20);
+            this.textBoxDescription.Size = new System.Drawing.Size(186, 20);
             this.textBoxDescription.TabIndex = 5;
             // 
             // textBoxQuantity
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(198, 42);
+            this.textBoxQuantity.Location = new System.Drawing.Point(197, 42);
             this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(80, 20);
+            this.textBoxQuantity.Size = new System.Drawing.Size(79, 20);
             this.textBoxQuantity.TabIndex = 6;
             // 
             // textBoxStartDate
             // 
             this.textBoxStartDate.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxStartDate.Location = new System.Drawing.Point(285, 42);
+            this.textBoxStartDate.Location = new System.Drawing.Point(283, 42);
             this.textBoxStartDate.Name = "textBoxStartDate";
             this.textBoxStartDate.Size = new System.Drawing.Size(87, 20);
             this.textBoxStartDate.TabIndex = 7;
@@ -119,7 +119,7 @@
             this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.10299F));
             this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.89701F));
             this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.tableCreateRFQ.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableCreateRFQ.Controls.Add(this.textBoxDescription, 0, 1);
             this.tableCreateRFQ.Controls.Add(this.label4, 3, 0);
             this.tableCreateRFQ.Controls.Add(this.StartDateLbl, 2, 0);

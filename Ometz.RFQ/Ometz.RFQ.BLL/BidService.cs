@@ -11,13 +11,14 @@ namespace Ometz.RFQ.BLL
 {
     public class BidService:QuoteBidBase
     {
-        public void setNewBid(QuoteBidDTO newBid, int companyId)
+        public bool setNewBid(QuoteBidDTO newBid, int companyId)
         {
+           //bool result = false;
            QuoteParticipantService newParticipantSupplier = new QuoteParticipantService();
             newParticipantSupplier.CompanyID = companyId;
             newParticipantSupplier.QuoteID = newBid.QuoteID;
             newParticipantSupplier.SetNewParticipant(companyId, newBid.QuoteID);
-          using (TransactionScope transaction = new TransactionScope())
+            using (TransactionScope transaction = new TransactionScope())
             {
 
                 try
@@ -53,11 +54,13 @@ namespace Ometz.RFQ.BLL
                 catch (Exception e)
                 {
                     transaction.Dispose();
+                    return false;
                    
 
 
                 }
                 transaction.Complete();
+                return true;
                 
 
             }  

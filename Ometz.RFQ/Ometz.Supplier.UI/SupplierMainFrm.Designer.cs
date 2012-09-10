@@ -43,7 +43,7 @@
             this.dgvBidsInfo.Name = "dgvBidsInfo";
             this.dgvBidsInfo.Size = new System.Drawing.Size(689, 150);
             this.dgvBidsInfo.TabIndex = 0;
-            this.dgvBidsInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBidsInfo_CellContentClick);
+            this.dgvBidsInfo.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBidsInfo_RowHeaderMouseClick);
             // 
             // btnShowQuotes
             // 
@@ -97,6 +97,7 @@
             this.Controls.Add(this.dgvBidsInfo);
             this.Name = "frmSupplierMain";
             this.Text = "Supplier";
+            this.Activated += new System.EventHandler(this.frmSupplierMain_Load);
             this.Load += new System.EventHandler(this.frmSupplierMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidsInfo)).EndInit();
             this.ResumeLayout(false);
