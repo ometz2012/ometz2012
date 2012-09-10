@@ -137,7 +137,6 @@ namespace Ometz.RFQ.BLL
                                on quote.QuoteID equals quoteDet.Quote.QuoteID into qq
                                orderby quote.QuoteID descending
                                from quoteDet in qq.DefaultIfEmpty()
-                               where quote.CompanyID != CompanyID && quote.Status == 1
                                select new
                                {
                                    QuoteID = quote.QuoteID,
