@@ -108,7 +108,7 @@
     <Property Name="CompanyID" Type="int" Nullable="false" />
     <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="EndDate" Type="datetime" Nullable="false" />
-    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="QuoteBid">
     <Key>

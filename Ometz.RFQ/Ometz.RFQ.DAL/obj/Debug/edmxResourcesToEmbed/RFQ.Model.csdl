@@ -118,7 +118,7 @@
     <Property Name="CompanyID" Type="Int32" Nullable="false" />
     <Property Name="StartDate" Type="DateTime" Nullable="false" />
     <Property Name="EndDate" Type="DateTime" Nullable="false" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Status" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Company" Relationship="RFQModel.FK_Quote_Company" FromRole="Quote" ToRole="Company" />
     <NavigationProperty Name="QuoteBids" Relationship="RFQModel.FK_QuoteBid_Quote" FromRole="Quote" ToRole="QuoteBid" />
     <NavigationProperty Name="QuoteDetails" Relationship="RFQModel.FK_QuoteDetail_Quote" FromRole="Quote" ToRole="QuoteDetail" />

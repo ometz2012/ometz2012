@@ -26,7 +26,7 @@ namespace Ometz.RFQ.BLL
                     //Data transfer to the the AddressIn
                     QuoteIn.StartDate = QuoteNew.StartDate;
                     QuoteIn.EndDate = QuoteNew.EndDate;
-                    QuoteIn.Status = true;
+                    QuoteIn.Status = 1;
 
                     using (var context = new RFQEntities())
                     {
@@ -137,6 +137,7 @@ namespace Ometz.RFQ.BLL
                                on quote.QuoteID equals quoteDet.Quote.QuoteID into qq
                                orderby quote.QuoteID descending
                                from quoteDet in qq.DefaultIfEmpty()
+                               where quote.CompanyID != CompanyID && quote.Status == 1
                                select new
                                {
                                    QuoteID = quote.QuoteID,
@@ -325,7 +326,7 @@ namespace Ometz.RFQ.BLL
                         {
                             foreach (Quote q in quote)
                             {
-                                q.Status = false;
+                                q.Status = 0;
 
                             }
                         }
@@ -359,7 +360,7 @@ namespace Ometz.RFQ.BLL
             {
               
                 var quotes = (from quote in context.Quotes
-                              where quote.CompanyID != companyId && quote.Status == true
+                              where quote.CompanyID != companyId && quote.Status == 1
                               select quote).ToList();
                 if (quotes.Count > 0)
                 {

@@ -1260,7 +1260,7 @@ namespace Ometz.RFQ.DAL
         /// <param name="startDate">Initial value of the StartDate property.</param>
         /// <param name="endDate">Initial value of the EndDate property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static Quote CreateQuote(global::System.Int32 quoteID, global::System.Int32 companyID, global::System.DateTime startDate, global::System.DateTime endDate, global::System.Boolean status)
+        public static Quote CreateQuote(global::System.Int32 quoteID, global::System.Int32 companyID, global::System.DateTime startDate, global::System.DateTime endDate, global::System.Int16 status)
         {
             Quote quote = new Quote();
             quote.QuoteID = quoteID;
@@ -1378,7 +1378,7 @@ namespace Ometz.RFQ.DAL
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean Status
+        public global::System.Int16 Status
         {
             get
             {
@@ -1393,8 +1393,8 @@ namespace Ometz.RFQ.DAL
                 OnStatusChanged();
             }
         }
-        private global::System.Boolean _Status;
-        partial void OnStatusChanging(global::System.Boolean value);
+        private global::System.Int16 _Status;
+        partial void OnStatusChanging(global::System.Int16 value);
         partial void OnStatusChanged();
 
         #endregion

@@ -13,7 +13,7 @@ namespace Ometz.RFQ.BLL.Model
         public int CompanyID{ get; set; }
         public DateTime StartDate{ get; set; }
         public DateTime EndDate{ get; set; }
-        public bool Status { get; set; }
+        public Int16 Status { get; set; }
         //public abstract string GetCompany(int CompanyID);
         //public virtual DTOQuote ShowBid();
     }
