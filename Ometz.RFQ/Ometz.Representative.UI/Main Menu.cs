@@ -16,6 +16,7 @@ namespace Ometz.Representative.UI
 
         int companyID;        
         int quoteIDSelected;
+        bool result=true;
          
 
         public MainMenu(int companyID)
@@ -39,8 +40,17 @@ namespace Ometz.Representative.UI
      
         private void ParticipantBtn_Click(object sender, EventArgs e)
         {
-            ParticipantRFQ participRFQ = new ParticipantRFQ(quoteIDSelected);
-            participRFQ.ShowDialog(this);
+            if (result)
+            {
+                ParticipantRFQ participRFQ = new ParticipantRFQ(quoteIDSelected);
+                participRFQ.ShowDialog(this);
+            }
+            else
+            {
+
+                MessageBox.Show("Quote was not chosen. Please, choose the quote", "Application", MessageBoxButtons.OK);
+            }
+            
         }
         
                
@@ -48,7 +58,9 @@ namespace Ometz.Representative.UI
         
         private void TerminateRFQBtn_Click(object sender, EventArgs e)
         {
-
+            Terminate_RFQ terminateRFQ = new Terminate_RFQ(quoteIDSelected, this);
+            terminateRFQ.Show(this);
+            LoadData();
         }
 
         
@@ -103,7 +115,7 @@ namespace Ometz.Representative.UI
         
             int rowNumber = e.RowIndex;
             int value;          
-            bool result = int.TryParse(dataGridQuote.SelectedRows[0].Cells[2].Value.ToString(), out value);
+            result = int.TryParse(dataGridQuote.SelectedRows[0].Cells[2].Value.ToString(), out value);
             if (result)
             {
                 quoteIDSelected = value;
@@ -122,10 +134,11 @@ namespace Ometz.Representative.UI
         
         public void LoadData()
         {
-            ParticipantBtn.Enabled = false;
+            
             QuoteDTO quotesToShow = new QuoteDTO();           
             this.dataGridQuote.DataSource = quotesToShow.GetBid();
             dataGridQuote.Columns["CompanyID"].Visible = false;
+            
         }
 
         private void MainMenu_Load(object sender, EventArgs e)

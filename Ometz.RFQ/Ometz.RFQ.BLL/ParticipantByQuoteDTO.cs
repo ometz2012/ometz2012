@@ -13,6 +13,7 @@ namespace Ometz.RFQ.BLL
         public string Notes { get; set; }
         public string CompanyName { get; set; }
         public string CategoryType { get; set; }
+        public string Text { get; set; }
 
     }
 }

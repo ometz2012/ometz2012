@@ -306,8 +306,8 @@ namespace Ometz.RFQ.BLL
             bool check = false;
 
 
-            using (TransactionScope transaction = new TransactionScope())
-            {
+            //using (TransactionScope transaction = new TransactionScope())
+            //{
 
                 try
                 {
@@ -327,28 +327,31 @@ namespace Ometz.RFQ.BLL
                             {
                                 q.Status = 0;
 
-                            }
-                        }
-                    }
+                            }      
 
-                }
+                        context.SaveChanges();
+                            
+                        }
+                     }
+
+                 }
 
                 catch (Exception e)
                 {
-                    transaction.Dispose();
+                   // transaction.Dispose();
                     check = false;
                     return check;
 
 
                 }
-                transaction.Complete();
+                //transaction.Complete();
                 check = true;
                 return check;
 
 
             }
 
-        }
+        
         //Method that returns all the active quotes by company ID (the company doesn't participate in these quotes yet
         // Method is written for SupplierUI
         public List<QuoteDTO> GetAllActiveQuotes(int companyId)

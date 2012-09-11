@@ -86,6 +86,12 @@
     <Compile Include="SearchSuppliers.Designer.cs">
       <DependentUpon>SearchSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Terminate_RFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Terminate_RFQ.Designer.cs">
+      <DependentUpon>Terminate_RFQ.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CategoryTree.resx">
       <DependentUpon>CategoryTree.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="SearchSuppliers.resx">
       <DependentUpon>SearchSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Terminate_RFQ.resx">
+      <DependentUpon>Terminate_RFQ.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
     <None Include="Properties\Settings.settings">

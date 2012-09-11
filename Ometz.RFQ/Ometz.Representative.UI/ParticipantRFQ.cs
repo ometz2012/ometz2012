@@ -13,24 +13,30 @@ namespace Ometz.Representative.UI
     public partial class ParticipantRFQ : Form
     {
         int _quoteId;
+        
+
         public ParticipantRFQ()
         {
             InitializeComponent();
             LoadData();
+            
 
         }
+       
         public ParticipantRFQ(int quoteId)
         {
             InitializeComponent();
             _quoteId = quoteId;
             LoadData();
+           
 
         }
 
         private void AddParticipBtn_Click(object sender, EventArgs e)
         {
-            ParticipantRFQ participRFQ = new ParticipantRFQ();
-            participRFQ.ShowDialog(this);
+            
+            AddPartcipant addparticip= new AddPartcipant();
+            addparticip.ShowDialog(this);
         }
 
         
@@ -44,11 +50,16 @@ namespace Ometz.Representative.UI
         {
            
         }
+     
         public void LoadData()
         {         
-           ParticipantByQuoteDTO allParticipantsInQuote = new ParticipantByQuoteDTO();
+            ParticipantByQuoteDTO allParticipantsInQuote = new ParticipantByQuoteDTO();
+            label1.Text = allParticipantsInQuote.Text;
+
             QuoteParticipantService quoteParticipantsService = new QuoteParticipantService();
             dgvParticipantsInQuote.DataSource = quoteParticipantsService.GetQuoteParticipant(_quoteId);
+            
+            
         }
         
         

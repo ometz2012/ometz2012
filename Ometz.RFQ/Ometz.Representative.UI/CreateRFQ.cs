@@ -15,6 +15,7 @@ namespace Ometz.Representative.UI
     {
         int companyIDIn;
         MainMenu instanceMainForm;
+
         public CreateRFQ(int companyId, MainMenu mainMenuForm)
            
         {
@@ -104,7 +105,6 @@ namespace Ometz.Representative.UI
                         MessageBox.Show("Quote was created. ", "app", MessageBoxButtons.OK);
                        
                         this.Close();
-                       //MainMenu mm = new MainMenu(companyIDIn);
                         instanceMainForm.LoadData();
                     }
                     else
