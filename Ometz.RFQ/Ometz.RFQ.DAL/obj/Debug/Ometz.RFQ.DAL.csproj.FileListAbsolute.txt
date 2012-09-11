@@ -40,3 +40,9 @@ C:\Users\student01\Documents\Visual Studio 2010\Projects\Project. Sept10\trunk\O
 C:\Users\student01\Documents\Visual Studio 2010\Projects\Project. Sept10\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\student01\Documents\Visual Studio 2010\Projects\Project. Sept10\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
 C:\Users\student01\Documents\Visual Studio 2010\Projects\Project. Sept10\trunk\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb
+C:\Development\RFQ\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll.config
+C:\Development\RFQ\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.dll
+C:\Development\RFQ\Ometz.RFQ\Ometz.RFQ.DAL\bin\Debug\Ometz.RFQ.DAL.pdb
+C:\Development\RFQ\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\RFQ\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.dll
+C:\Development\RFQ\Ometz.RFQ\Ometz.RFQ.DAL\obj\Debug\Ometz.RFQ.DAL.pdb

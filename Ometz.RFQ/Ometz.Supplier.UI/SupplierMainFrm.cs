@@ -47,7 +47,7 @@ namespace Ometz.Supplier.UI
         {
             //createNewBidButtonDisabling();
             //dgvBidsInfo.DataSource = null;
-            QuoteBidDTO bidsToShow = new QuoteBidDTO();
+            BidService bidsToShow = new BidService();
             dgvBidsInfo.DataSource = bidsToShow.GetMyBids(compId); // 2 is a company ID
             dgvBidsInfo.Columns["CompanyID"].Visible = false;
             dgvBidsInfo.Columns["QuoteID"].Visible = false;

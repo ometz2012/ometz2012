@@ -66,7 +66,39 @@ namespace Ometz.RFQ.BLL
             }  
          } 
 
-       }
+       
+      //Method takes active bids by CompanyId for supplier
+     public IList<QuoteBidDTO> GetMyBids(int CompanyID)
+        {
+            
+            IList<QuoteBid> bids = new List<QuoteBid>();
+            IList<QuoteBidDTO> bidsToReturn = new List<QuoteBidDTO>();
+            using (var context = new RFQEntities())
+            {
+                bids = (from bid in context.QuoteBids.Include("Quote").Include("Quote.Company").Include("Quote.Company.CompanyType")
+                        where bid.QuoteParticipant.CompanyID == CompanyID && bid.Quote.Status==1
+                        select bid).ToList();
+                if (bids.Count > 0)
+                {
+                    foreach (var item in bids)
+                    {
+                        QuoteBidDTO bidRow = new QuoteBidDTO();
+                        bidRow.QuoteBidID = item.QuoteBidID;
+                        bidRow.QuoteID = item.QuoteID;
+                        bidRow.QuoteParticipantID = item.QuoteParticipantID;
+                        bidRow.CompanyID = item.Quote.Company.CompanyID;
+                        bidRow.Amount = item.Amount;
+                        bidRow.Notes = item.Notes;
+                        bidRow.Name = item.Quote.Company.Name;
+                        bidRow.Type = item.Quote.Company.CompanyType.Type;                       
+                        bidsToReturn.Add(bidRow);
+                    }
+                }
+            }
+
+            return bidsToReturn;
+        }}
+    
     }
 
 
