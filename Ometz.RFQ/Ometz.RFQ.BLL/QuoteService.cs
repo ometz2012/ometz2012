@@ -387,9 +387,6 @@ namespace Ometz.RFQ.BLL
 
                 }
 
-
-
-
             }
             return quotesToReturn;
         }

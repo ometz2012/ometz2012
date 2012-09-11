@@ -45,10 +45,16 @@ namespace Ometz.Supplier.UI
 
         private void btnShowMyBids_Click(object sender, EventArgs e)
         {
-            createNewBidButtonDisabling();
-            dgvBidsInfo.DataSource = null;
+            //createNewBidButtonDisabling();
+            //dgvBidsInfo.DataSource = null;
             QuoteBidDTO bidsToShow = new QuoteBidDTO();
-            dgvBidsInfo.DataSource = bidsToShow.ShowParticipantBids(3); // 2 is a participant ID
+            dgvBidsInfo.DataSource = bidsToShow.GetMyBids(compId); // 2 is a company ID
+            dgvBidsInfo.Columns["CompanyID"].Visible = false;
+            dgvBidsInfo.Columns["QuoteID"].Visible = false;
+            dgvBidsInfo.Columns["QuoteParticipantID"].Visible = false;
+            dgvBidsInfo.Columns["QuoteBidID"].Visible = false;
+            //dgvBidsInfo.Columns["CompanyType"].Visible = false;
+
         }
 
         private void btnCreateNewBid_Click(object sender, EventArgs e)
