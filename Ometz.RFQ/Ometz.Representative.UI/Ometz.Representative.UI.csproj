@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddParticipantToQuote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddParticipantToQuote.Designer.cs">
+      <DependentUpon>AddParticipantToQuote.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApplicationServices.cs" />
     <Compile Include="CategoryTree.cs">
       <SubType>Form</SubType>
@@ -92,6 +98,9 @@
     <Compile Include="Terminate_RFQ.Designer.cs">
       <DependentUpon>Terminate_RFQ.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddParticipantToQuote.resx">
+      <DependentUpon>AddParticipantToQuote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CategoryTree.resx">
       <DependentUpon>CategoryTree.cs</DependentUpon>
     </EmbeddedResource>

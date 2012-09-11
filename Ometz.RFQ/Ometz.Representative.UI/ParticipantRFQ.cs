@@ -34,8 +34,8 @@ namespace Ometz.Representative.UI
 
         private void AddParticipBtn_Click(object sender, EventArgs e)
         {
-            
-            AddPartcipant addparticip= new AddPartcipant();
+
+            AddParticipantToQuote addparticip = new AddParticipantToQuote(_quoteId);
             addparticip.ShowDialog(this);
         }
 
@@ -57,7 +57,7 @@ namespace Ometz.Representative.UI
             label1.Text = allParticipantsInQuote.Text;
 
             QuoteParticipantService quoteParticipantsService = new QuoteParticipantService();
-            dgvParticipantsInQuote.DataSource = quoteParticipantsService.GetQuoteParticipant(_quoteId);
+            dgvParticipantsInQuote.DataSource = quoteParticipantsService.GetQuoteParticipantsList(_quoteId);
             
             
         }

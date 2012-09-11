@@ -18,5 +18,8 @@ namespace Ometz.RFQ.BLL
 
         //Method that creates new Company
         bool CreateNewCompany(CompanyDTO CompanyNew);
+
+        //This Method returns list of suppliers by their category
+        List<CompanyWithCatgoryDTO> GetCompaniesWithCategories();
     }
 }

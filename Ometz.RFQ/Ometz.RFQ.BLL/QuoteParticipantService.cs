@@ -44,6 +44,7 @@ namespace Ometz.RFQ.BLL
                 }
             }
         }
+
         // This method returns the single Supplier Participant in the particular quote
         public QuoteParticipantBase GetQuoteParticipant(int companyId, int quoteId)
         {
@@ -65,8 +66,9 @@ namespace Ometz.RFQ.BLL
             }
 
         }
+
         // Method returns all the participants by a particular quote
-        public List<ParticipantByQuoteDTO> GetQuoteParticipant(int quoteId)
+        public List<ParticipantByQuoteDTO> GetQuoteParticipantsList(int quoteId)
         {
             List<ParticipantByQuoteDTO> quoteAllParticipants = new List<ParticipantByQuoteDTO>();
             List <QuoteParticipant> quoteParticipant = new List<QuoteParticipant>();
@@ -91,9 +93,9 @@ namespace Ometz.RFQ.BLL
                         quoteRow.Notes = item.Notes;
                         quoteRow.Amount = item.Amount;
                     }
+
                     quoteAllParticipants.Add(quoteRow);
 
-                  
                     }
                   }
 

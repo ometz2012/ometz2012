@@ -135,6 +135,49 @@ namespace Ometz.RFQ.BLL
             return CompanyList;
         }
 
+        //This Method returns list of suppliers by their category
+        public List<CompanyWithCatgoryDTO> GetCompaniesWithCategories()
+        {
+            List<CompanyWithCatgoryDTO> CompaniesList = new List<CompanyWithCatgoryDTO>();
+            string path = "Category";
+
+            using (var context = new RFQEntities())
+            {
+                var results = (from comp in context.Companies.Include(path)
+                                   where comp.CompanyTypeID==2
+                                   select new 
+                                   {
+                                   CompanyID = comp.CompanyID,
+                                   CompanyName = comp.Name,
+                                   CategoryID = comp.Category.CategoryID,
+                                   CompanyCategory = comp.Category.Type,
+                                   CompanyTypeID = comp.CompanyType.CompanyTypeID,
+                                   CompanyType = comp.CompanyType.Type,
+                                   CompanyFax=comp.Fax,
+                                   CompanyEmail=comp.Email,
+                                   CompanyPhone=comp.Phone});
+                foreach (var item in results)
+                {
+                    CompanyWithCatgoryDTO CompanyRow = new CompanyWithCatgoryDTO();
+                    CompanyRow.CompanyID = item.CompanyID;
+                    CompanyRow.Name = item.CompanyName;
+                    CompanyRow.CategoryID=item.CategoryID;
+                    CompanyRow.CategoryType=item.CompanyCategory;
+                    CompanyRow.CompanyTypeID = item.CompanyTypeID;
+                    CompanyRow.Fax = item.CompanyFax;
+                    CompanyRow.Phone = item.CompanyPhone;
+                    CompanyRow.Email = item.CompanyEmail;
+                    CompaniesList.Add(CompanyRow);
+
+                }
+
+            }
+            return CompaniesList;
+
+
+ 
+        }
+
 
 
         //Dory -- Get Company By Name Method

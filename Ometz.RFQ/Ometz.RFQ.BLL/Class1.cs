@@ -25,6 +25,11 @@ namespace Ometz.RFQ.BLL
         
 
     }
+    public class CompanyWithCatgoryDTO:CompanyBase
+    {
+        
+        public string CategoryType { get; set; }
+    }
 
     
 
